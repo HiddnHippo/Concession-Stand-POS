@@ -1,0 +1,328 @@
+[gd_scene load_steps=9 format=3 uid="uid://bllvejrl27rka"]
+
+[ext_resource type="Script" path="res://Scripts/register_screen.gd" id="1_trpjd"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_blgj1"]
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_kvjyf"]
+font_size = 50
+
+[sub_resource type="LabelSettings" id="LabelSettings_l5s7s"]
+font_size = 64
+font_color = Color(0, 0.631373, 0.0666667, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_sx0lm"]
+font_size = 64
+font_color = Color(0.976471, 0.113725, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_my17f"]
+font_size = 48
+font_color = Color(1, 1, 0.0352941, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_3ojc6"]
+font_size = 48
+font_color = Color(0.0431373, 1, 0.0352941, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_sw3dp"]
+font_size = 64
+font_color = Color(1, 1, 0.0196078, 1)
+
+[node name="RegisterScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_trpjd")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.25098, 0.25098, 0.25098, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="FoodButton" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 150)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/FoodButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -76.0
+offset_top = -44.0
+offset_right = 76.0
+offset_bottom = 44.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Food"
+label_settings = SubResource("LabelSettings_blgj1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DrinkButton" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 150)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/DrinkButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -76.0
+offset_top = -44.0
+offset_right = 76.0
+offset_bottom = 44.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Drinks"
+label_settings = SubResource("LabelSettings_blgj1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CandyButton" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 150)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/CandyButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -76.0
+offset_top = -44.0
+offset_right = 76.0
+offset_bottom = 44.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Candy"
+label_settings = SubResource("LabelSettings_blgj1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0, 0, 0, 1)
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/HBoxContainer/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="ConsoleWindow" type="Label" parent="VBoxContainer/HBoxContainer/ColorRect/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "
+"
+label_settings = SubResource("LabelSettings_kvjyf")
+
+[node name="CashBox" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="5Box" type="Button" parent="VBoxContainer/HBoxContainer/CashBox"]
+custom_minimum_size = Vector2(200, 125)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/CashBox/5Box"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -36.5
+offset_top = -44.0
+offset_right = 36.5
+offset_bottom = 44.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "$5"
+label_settings = SubResource("LabelSettings_l5s7s")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="10Box" type="Button" parent="VBoxContainer/HBoxContainer/CashBox"]
+custom_minimum_size = Vector2(200, 125)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/CashBox/10Box"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -36.5
+offset_top = -44.0
+offset_right = 36.5
+offset_bottom = 44.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "$10"
+label_settings = SubResource("LabelSettings_l5s7s")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="20Box" type="Button" parent="VBoxContainer/HBoxContainer/CashBox"]
+custom_minimum_size = Vector2(200, 125)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/CashBox/20Box"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -36.5
+offset_top = -44.0
+offset_right = 36.5
+offset_bottom = 44.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "$20"
+label_settings = SubResource("LabelSettings_l5s7s")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CashTendered" type="LineEdit" parent="VBoxContainer/HBoxContainer/CashBox"]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+theme_override_colors/font_placeholder_color = Color(0, 1, 0.72549, 1)
+theme_override_colors/font_color = Color(0, 0.780392, 0, 1)
+theme_override_font_sizes/font_size = 38
+placeholder_text = "Enter Amt"
+alignment = 1
+virtual_keyboard_type = 3
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="MenuButton" type="Button" parent="VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(200, 125)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2/MenuButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -60.0
+offset_top = -44.0
+offset_right = 60.0
+offset_bottom = 44.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Menu
+"
+label_settings = SubResource("LabelSettings_sx0lm")
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0, 0, 0, 1)
+
+[node name="TotalDisplay" type="Label" parent="VBoxContainer/HBoxContainer2/ColorRect"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -33.5
+offset_right = 141.0
+offset_bottom = 33.5
+grow_vertical = 2
+text = "Total:"
+label_settings = SubResource("LabelSettings_my17f")
+
+[node name="TenderDisplay" type="Label" parent="VBoxContainer/HBoxContainer2/ColorRect"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -141.0
+offset_top = -33.5
+offset_bottom = 33.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "Tendered: "
+label_settings = SubResource("LabelSettings_3ojc6")
+
+[node name="PayButton" type="Button" parent="VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(200, 125)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2/PayButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -60.0
+offset_top = -44.0
+offset_right = 60.0
+offset_bottom = 44.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "PAY"
+label_settings = SubResource("LabelSettings_sw3dp")
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/VBoxContainer/FoodButton" to="." method="_on_food_button_press"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/VBoxContainer/DrinkButton" to="." method="_on_drink_button_press"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/VBoxContainer/CandyButton" to="." method="_on_candy_button_press"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/CashBox/5Box" to="." method="_on_five_dollar_press"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/CashBox/10Box" to="." method="_on_ten_dollar_press"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/CashBox/20Box" to="." method="_on_twenty_dollar_press"]
+[connection signal="text_changed" from="VBoxContainer/HBoxContainer/CashBox/CashTendered" to="." method="_on_tendered_amount_entered"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer2/MenuButton" to="." method="_on_menu_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer2/PayButton" to="." method="_on_pay_press"]

@@ -1,0 +1,179 @@
+[gd_scene load_steps=5 format=3 uid="uid://by4d8i8rx7wuc"]
+
+[ext_resource type="Script" path="res://Scripts/menu_screen.gd" id="1_etosh"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_wtntp"]
+font_size = 64
+
+[sub_resource type="LabelSettings" id="LabelSettings_0sssb"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_llcsq"]
+font_size = 32
+outline_size = 6
+outline_color = Color(0, 0, 0, 1)
+
+[node name="MenuScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_etosh")
+
+[node name="BackgroundGrey" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.252028, 0.252028, 0.252028, 1)
+
+[node name="TopLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -260.5
+offset_right = 260.5
+offset_bottom = 88.0
+grow_horizontal = 2
+text = "Concessions POS"
+label_settings = SubResource("LabelSettings_wtntp")
+
+[node name="VersionBar" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0, 0, 0, 1)
+
+[node name="VersionLabel" type="Label" parent="VersionBar"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -111.5
+offset_top = -23.0
+offset_right = 111.5
+grow_horizontal = 2
+grow_vertical = 0
+text = " v1.0"
+label_settings = SubResource("LabelSettings_0sssb")
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(400, 400)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -18.0
+offset_bottom = 18.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="RegisterButton" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/RegisterButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -11.5
+offset_right = 32.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Register"
+label_settings = SubResource("LabelSettings_llcsq")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ReportsButton" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/ReportsButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -11.5
+offset_right = 32.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Reports
+"
+label_settings = SubResource("LabelSettings_llcsq")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ManageButton" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/ManageButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -11.5
+offset_right = 32.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Manage
+"
+label_settings = SubResource("LabelSettings_llcsq")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="QuitButton" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/QuitButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -11.5
+offset_right = 32.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Exit
+"
+label_settings = SubResource("LabelSettings_llcsq")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="VBoxContainer/RegisterButton" to="." method="_on_register_button_press"]
+[connection signal="pressed" from="VBoxContainer/ReportsButton" to="." method="_on_reports_button_press"]
+[connection signal="pressed" from="VBoxContainer/ManageButton" to="." method="_on_manage_button_press"]
+[connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_press"]

@@ -1,0 +1,228 @@
+[gd_scene load_steps=5 format=3 uid="uid://bllvejrl27rka"]
+
+[ext_resource type="Script" path="res://Scenes/register_screen.gd" id="1_rwkuq"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_blgj1"]
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_l5s7s"]
+font_size = 64
+font_color = Color(0, 0.631373, 0.0666667, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_sw3dp"]
+font_size = 64
+font_color = Color(1, 1, 0.0196078, 1)
+
+[node name="RegisterScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rwkuq")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.25098, 0.25098, 0.25098, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="FoodButton" type="Button" parent="HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 150)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/FoodButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -76.0
+offset_top = -44.0
+offset_right = 76.0
+offset_bottom = 44.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Food"
+label_settings = SubResource("LabelSettings_blgj1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DrinkButton" type="Button" parent="HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 150)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/DrinkButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -76.0
+offset_top = -44.0
+offset_right = 76.0
+offset_bottom = 44.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Drinks"
+label_settings = SubResource("LabelSettings_blgj1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CandyButton" type="Button" parent="HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 150)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/CandyButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -76.0
+offset_top = -44.0
+offset_right = 76.0
+offset_bottom = 44.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Candy"
+label_settings = SubResource("LabelSettings_blgj1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0, 0, 0, 1)
+
+[node name="CashBox" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="5Box" type="Button" parent="HBoxContainer/CashBox"]
+custom_minimum_size = Vector2(200, 125)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="HBoxContainer/CashBox/5Box"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -36.5
+offset_top = -44.0
+offset_right = 36.5
+offset_bottom = 44.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "$5"
+label_settings = SubResource("LabelSettings_l5s7s")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="10Box" type="Button" parent="HBoxContainer/CashBox"]
+custom_minimum_size = Vector2(200, 125)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="HBoxContainer/CashBox/10Box"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -36.5
+offset_top = -44.0
+offset_right = 36.5
+offset_bottom = 44.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "$10"
+label_settings = SubResource("LabelSettings_l5s7s")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="20Box" type="Button" parent="HBoxContainer/CashBox"]
+custom_minimum_size = Vector2(200, 125)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="HBoxContainer/CashBox/20Box"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -36.5
+offset_top = -44.0
+offset_right = 36.5
+offset_bottom = 44.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "$20"
+label_settings = SubResource("LabelSettings_l5s7s")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CashTendered" type="LineEdit" parent="HBoxContainer/CashBox"]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+theme_override_colors/font_placeholder_color = Color(0, 1, 0.72549, 1)
+theme_override_colors/font_color = Color(0, 0.780392, 0, 1)
+theme_override_font_sizes/font_size = 20
+placeholder_text = "Input $ Amount"
+alignment = 1
+virtual_keyboard_type = 3
+
+[node name="PayButton" type="Button" parent="HBoxContainer/CashBox"]
+custom_minimum_size = Vector2(200, 125)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/CashBox/PayButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -60.0
+offset_top = -44.0
+offset_right = 60.0
+offset_bottom = 44.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "PAY"
+label_settings = SubResource("LabelSettings_sw3dp")
+
+[connection signal="text_submitted" from="HBoxContainer/CashBox/CashTendered" to="." method="_on_tendered_amount_entered"]
