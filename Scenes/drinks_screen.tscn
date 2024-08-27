@@ -1,0 +1,119 @@
+[gd_scene load_steps=3 format=3 uid="uid://bgpv6arbfterh"]
+
+[ext_resource type="PackedScene" uid="uid://oyk7n01764cn" path="res://Scenes/magic_button.tscn" id="1_ma6oy"]
+[ext_resource type="Script" path="res://Scripts/drinks_screen.gd" id="1_ols6x"]
+
+[node name="DrinksScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ols6x")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.205117, 0.205117, 0.205117, 1)
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 5
+
+[node name="MagicButton" parent="GridContainer" instance=ExtResource("1_ma6oy")]
+self_modulate = Color(0, 0, 0.866667, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+autowrap_mode = 3
+item_name = "Pepsi"
+item_price = 3.0
+
+[node name="MagicButton2" parent="GridContainer" instance=ExtResource("1_ma6oy")]
+self_modulate = Color(0.372455, 0.567747, 1, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+autowrap_mode = 3
+item_name = "Diet Pepsi"
+item_price = 3.0
+
+[node name="MagicButton3" parent="GridContainer" instance=ExtResource("1_ma6oy")]
+self_modulate = Color(0, 1, 0, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+autowrap_mode = 3
+item_name = "Mountain Dew"
+item_price = 3.0
+
+[node name="MagicButton4" parent="GridContainer" instance=ExtResource("1_ma6oy")]
+self_modulate = Color(0.490196, 1, 0.427451, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+autowrap_mode = 3
+item_name = "Diet Mountain Dew"
+item_price = 3.0
+
+[node name="MagicButton5" parent="GridContainer" instance=ExtResource("1_ma6oy")]
+self_modulate = Color(1, 1, 0, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+autowrap_mode = 3
+item_name = "Starry"
+item_price = 3.0
+
+[node name="MagicButton6" parent="GridContainer" instance=ExtResource("1_ma6oy")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+autowrap_mode = 3
+item_name = "Can Soda"
+item_price = 1.0
+
+[node name="MagicButton7" parent="GridContainer" instance=ExtResource("1_ma6oy")]
+self_modulate = Color(1, 0.317647, 1, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+autowrap_mode = 3
+item_name = "Gatorade"
+item_price = 3.0
+
+[node name="MagicButton10" parent="GridContainer" instance=ExtResource("1_ma6oy")]
+self_modulate = Color(0.376471, 0.415686, 1, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+autowrap_mode = 3
+item_name = "Water"
+item_price = 2.0
+
+[node name="MagicButton8" parent="GridContainer" instance=ExtResource("1_ma6oy")]
+self_modulate = Color(1, 0.415686, 0.145098, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+autowrap_mode = 3
+item_name = "Coffee"
+item_price = 2.0
+
+[node name="MagicButton9" parent="GridContainer" instance=ExtResource("1_ma6oy")]
+self_modulate = Color(1, 0.415686, 0.145098, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+autowrap_mode = 3
+item_name = "Hot Chocolate"
+item_price = 2.0
+
+[node name="Button" type="Button" parent="GridContainer"]
+self_modulate = Color(1, 0, 0, 1)
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Return"
+
+[connection signal="pressed" from="GridContainer/Button" to="." method="_on_button_pressed"]

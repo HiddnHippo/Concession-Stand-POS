@@ -39,7 +39,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
-color = Color(0.0605303, 0.0605303, 0.0605303, 1)
+color = Color(0.113725, 0.690196, 0.0705882, 1)
 
 [node name="AfterScreenLabel" type="Label" parent="HBoxContainer/VBoxContainer/Button"]
 layout_mode = 1
@@ -51,5 +51,19 @@ grow_vertical = 2
 label_settings = SubResource("LabelSettings_34u33")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/Button"]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Touch to Continue"
+label_settings = SubResource("LabelSettings_34u33")
+horizontal_alignment = 1
 
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/Button" to="." method="_on_after_screen_pressed"]

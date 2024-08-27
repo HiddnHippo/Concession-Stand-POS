@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://divd465tddelb"]
+
+[ext_resource type="Script" path="res://Scripts/item_button.gd" id="1_ahxpf"]
+
+[node name="ItemButton" type="Button" groups=["items"]]
+custom_minimum_size = Vector2(250, 200)
+offset_right = 8.0
+offset_bottom = 200.0
+theme_override_font_sizes/font_size = 40
+script = ExtResource("1_ahxpf")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

@@ -4,67 +4,81 @@ signal main_menu
 signal insufficient_funds
 signal return_change
 signal thank_you
+signal save_sales_report
 
 var subtotal: float = 0.0:
 	set(val):
 		total += val
 		subtotal = 0
-		total_display.text = str("Total: ", total)
+		total_display.text = str("Total: ", total).pad_decimals(2)
 		
 var total: float = 0.0
 var tendered_amount: float = 0.0
+
+var sales_report = {}
+var customer_count: int = 0
+var sales_total: float
 
 var money_given: float = 0.0:
 	set(val):
 		tendered_amount += val
 		val = 0
-		tender_display.text = str("Tendered: ", tendered_amount)
 
-@onready var cash_tendered: LineEdit = $VBoxContainer/HBoxContainer/CashBox/CashTendered
-@onready var console_window: Label = $VBoxContainer/HBoxContainer/ColorRect/ScrollContainer/ConsoleWindow
+@onready var item_window = $VBoxContainer/HBoxContainer/ColorRect/ScrollContainer/ItemWindow
 @onready var total_display: Label = $VBoxContainer/HBoxContainer2/ColorRect/TotalDisplay
-@onready var tender_display: Label = $VBoxContainer/HBoxContainer2/ColorRect/TenderDisplay
+@onready var keypad: Panel = $Keypad
+@onready var food_screen = $FoodScreen
+@onready var candy_screen = $CandyScreen
+@onready var drinks_screen = $DrinksScreen
 
+@onready var item_line_panel = preload("res://Scenes/item_line.tscn")
 
 func _ready():
+	customer_count = 0
 	hide()
 	clear_transaction()
+	keypad.hide()
+	food_screen.hide()
+	keypad.cash_entry.connect(_on_keypad_cash_entry)
 	
+	var items = get_tree().get_nodes_in_group("items")
+	for i in items:
+		i.selected_item.connect(_on_add_item)
 	
 func _on_food_button_press():
-	add_item("Food", 5)
-	subtotal += 5
+	food_screen.show()
 	
-
+	
 func _on_drink_button_press():
-	add_item("Drink", 2)
-	subtotal += 2
+	drinks_screen.show()
 	
-
+	
 func _on_candy_button_press():
-	add_item("Candy", 1)
-	subtotal += 1
+	candy_screen.show()
 	
 	
 func _on_five_dollar_press():
 	money_given += 5
+	pay()
 	
 	
 func _on_ten_dollar_press():
 	money_given += 10
+	pay()
 	
 	
 func _on_twenty_dollar_press():
 	money_given += 20
+	pay()
 	
-func _on_pay_press():
+	
+func pay():
 	if total == 0:
 		clear_transaction()
 		return
 		
 	if total > tendered_amount:
 		insufficient_funds.emit()
-		print("insufficient")
 		tendered_amount = 0
 		money_given = 0
 		return
@@ -73,19 +87,40 @@ func _on_pay_press():
 		calculate_change(tendered_amount)	
 		
 	elif total == tendered_amount:
-		print("Thank You")
 		thank_you.emit()
 		clear_transaction()
+	customer_count += 1
 		
-
-func _on_tendered_amount_entered(amount):
-	tendered_amount = amount.to_float()
-	
 	
 func _on_menu_button_pressed():
 	hide()
 	clear_transaction()
+	save_sales_report.emit(sales_report, sales_total, customer_count)
 	main_menu.emit()
+	
+	
+func _on_amount_input_pressed():
+	if total == 0:
+		return
+	keypad.show()
+	
+	
+func _on_keypad_cash_entry(val):
+	money_given = val
+	pay()
+		
+		
+func _on_add_item(item_name:String, price:float):
+	var p = item_line_panel.instantiate()
+	item_window.add_child(p)
+	p.update_item(item_name, price)
+	p.remove_item.connect(_on_remove_item)
+	subtotal += price
+	
+	
+func _on_remove_item(item):
+	item.queue_free()
+	subtotal -= item.item_price
 	
 	
 func calculate_change(amt):
@@ -100,10 +135,17 @@ func clear_transaction():
 	subtotal = 0.0
 	tendered_amount = 0.0
 	money_given = 0.0
-	cash_tendered.text = ""
-	console_window.text = ""
-
-
-func add_item(item_name:String, price:float):
-	var text_to_add = str(item_name, ": ", price, "\n")
-	console_window.text += text_to_add
+	for c in item_window.get_children():
+		add_to_sales_report(c)
+		c.queue_free()
+		
+		
+func add_to_sales_report(item):
+	if sales_report.has(item.item_name):
+		var quantity = sales_report[item.item_name]
+		quantity += 1
+		sales_report[item.item_name] = quantity
+	else:
+		var temp_dictionary = {str(item.item_name):1}
+		sales_report.merge(temp_dictionary)
+	sales_total += item.item_price

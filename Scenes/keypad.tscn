@@ -1,0 +1,175 @@
+[gd_scene load_steps=4 format=3 uid="uid://oyy7dm0lnk6y"]
+
+[ext_resource type="Script" path="res://Scripts/keypad.gd" id="1_3k0o8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h8fg0"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_scvab"]
+font_size = 32
+
+[node name="Keypad" type="Panel"]
+custom_minimum_size = Vector2(450, 600)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -225.0
+offset_top = -300.0
+offset_right = 225.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_h8fg0")
+script = ExtResource("1_3k0o8")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(400, 600)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -300.0
+offset_right = 200.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 21
+
+[node name="ColorRect2" type="ColorRect" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer"]
+custom_minimum_size = Vector2(420, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color(0.0475577, 0.0475576, 0.0475576, 1)
+
+[node name="Label" type="Label" parent="VBoxContainer/ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.5
+offset_top = -22.5
+offset_right = 32.5
+offset_bottom = 22.5
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_scvab")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FirstRow" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 10
+
+[node name="KeyOne" type="Button" parent="VBoxContainer/FirstRow"]
+custom_minimum_size = Vector2(125, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "1"
+
+[node name="KeyTwo" type="Button" parent="VBoxContainer/FirstRow"]
+custom_minimum_size = Vector2(125, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "2"
+
+[node name="KeyThree" type="Button" parent="VBoxContainer/FirstRow"]
+custom_minimum_size = Vector2(125, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "3"
+
+[node name="SecondRow" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 10
+
+[node name="KeyFour" type="Button" parent="VBoxContainer/SecondRow"]
+custom_minimum_size = Vector2(125, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "4"
+
+[node name="KeyFive" type="Button" parent="VBoxContainer/SecondRow"]
+custom_minimum_size = Vector2(125, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "5"
+
+[node name="KeySix" type="Button" parent="VBoxContainer/SecondRow"]
+custom_minimum_size = Vector2(125, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "6"
+
+[node name="ThirdRow" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 10
+
+[node name="KeySeven" type="Button" parent="VBoxContainer/ThirdRow"]
+custom_minimum_size = Vector2(125, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "7"
+
+[node name="KeyEight" type="Button" parent="VBoxContainer/ThirdRow"]
+custom_minimum_size = Vector2(125, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "8"
+
+[node name="KeyNine" type="Button" parent="VBoxContainer/ThirdRow"]
+custom_minimum_size = Vector2(125, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "9"
+
+[node name="FourthRow" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 10
+
+[node name="KeyDot" type="Button" parent="VBoxContainer/FourthRow"]
+custom_minimum_size = Vector2(125, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "."
+
+[node name="KeyZero" type="Button" parent="VBoxContainer/FourthRow"]
+custom_minimum_size = Vector2(125, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "0"
+
+[node name="KeyEnter" type="Button" parent="VBoxContainer/FourthRow"]
+custom_minimum_size = Vector2(125, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "ENTER"
+
+[connection signal="pressed" from="VBoxContainer/FirstRow/KeyOne" to="." method="_on_key_one_pressed"]
+[connection signal="pressed" from="VBoxContainer/FirstRow/KeyTwo" to="." method="_on_key_two_pressed"]
+[connection signal="pressed" from="VBoxContainer/FirstRow/KeyThree" to="." method="_on_key_three_pressed"]
+[connection signal="pressed" from="VBoxContainer/SecondRow/KeyFour" to="." method="_on_key_four_pressed"]
+[connection signal="pressed" from="VBoxContainer/SecondRow/KeyFive" to="." method="_on_key_five_pressed"]
+[connection signal="pressed" from="VBoxContainer/SecondRow/KeySix" to="." method="_on_key_six_pressed"]
+[connection signal="pressed" from="VBoxContainer/ThirdRow/KeySeven" to="." method="_on_key_seven_pressed"]
+[connection signal="pressed" from="VBoxContainer/ThirdRow/KeyEight" to="." method="_on_key_eight_pressed"]
+[connection signal="pressed" from="VBoxContainer/ThirdRow/KeyNine" to="." method="_on_key_nine_pressed"]
+[connection signal="pressed" from="VBoxContainer/FourthRow/KeyDot" to="." method="_on_key_dot_pressed"]
+[connection signal="pressed" from="VBoxContainer/FourthRow/KeyZero" to="." method="_on_key_zero_pressed"]
+[connection signal="pressed" from="VBoxContainer/FourthRow/KeyEnter" to="." method="_on_key_enter_pressed"]

@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://7tetaltr70wv"]
+[gd_scene load_steps=6 format=3 uid="uid://7tetaltr70wv"]
 
 [ext_resource type="PackedScene" uid="uid://by4d8i8rx7wuc" path="res://Scenes/menu_screen.tscn" id="1_j547r"]
 [ext_resource type="Script" path="res://Scripts/pos.gd" id="1_wsw5e"]
 [ext_resource type="PackedScene" uid="uid://bllvejrl27rka" path="res://Scenes/register_screen.tscn" id="2_bcovt"]
 [ext_resource type="PackedScene" uid="uid://cv7ftnwhdrh82" path="res://Scenes/after_screen.tscn" id="4_8skkv"]
+[ext_resource type="PackedScene" uid="uid://p5upd7mtnv4b" path="res://Scenes/reports_screen.tscn" id="5_316e0"]
 
 [node name="POS" type="Node"]
 script = ExtResource("1_wsw5e")
@@ -11,5 +12,10 @@ script = ExtResource("1_wsw5e")
 [node name="MenuScreen" parent="." instance=ExtResource("1_j547r")]
 
 [node name="RegisterScreen" parent="." instance=ExtResource("2_bcovt")]
+visible = false
 
 [node name="AfterScreen" parent="." instance=ExtResource("4_8skkv")]
+visible = false
+
+[node name="ReportsScreen" parent="." instance=ExtResource("5_316e0")]
+visible = false

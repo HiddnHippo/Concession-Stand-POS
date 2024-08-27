@@ -1,0 +1,184 @@
+[gd_scene load_steps=3 format=3 uid="uid://cob61wmg76a8m"]
+
+[ext_resource type="Script" path="res://Scripts/candy_screen.gd" id="1_7glrd"]
+[ext_resource type="PackedScene" uid="uid://oyk7n01764cn" path="res://Scenes/magic_button.tscn" id="1_ma6oy"]
+
+[node name="CandyScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7glrd")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.28485, 0.28485, 0.28485, 1)
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 6
+
+[node name="MagicButton" parent="GridContainer" instance=ExtResource("1_ma6oy")]
+self_modulate = Color(1, 0, 1, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+autowrap_mode = 3
+item_name = "Cotton Candy"
+item_price = 2.0
+
+[node name="MagicButton2" parent="GridContainer" instance=ExtResource("1_ma6oy")]
+self_modulate = Color(1, 0, 1, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+autowrap_mode = 3
+item_name = "Airheads Extreme"
+item_price = 2.0
+
+[node name="MagicButton3" parent="GridContainer" instance=ExtResource("1_ma6oy")]
+self_modulate = Color(1, 0, 1, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+autowrap_mode = 3
+item_name = "Nerd Clusters"
+item_price = 2.0
+
+[node name="MagicButton4" parent="GridContainer" instance=ExtResource("1_ma6oy")]
+self_modulate = Color(1, 0, 1, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+autowrap_mode = 3
+item_name = "M&M's"
+item_price = 2.0
+
+[node name="MagicButton10" parent="GridContainer" instance=ExtResource("1_ma6oy")]
+self_modulate = Color(1, 0, 1, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+autowrap_mode = 3
+item_name = "Kit-Kat"
+item_price = 2.0
+
+[node name="MagicButton6" parent="GridContainer" instance=ExtResource("1_ma6oy")]
+self_modulate = Color(1, 0, 1, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+autowrap_mode = 3
+item_name = "Skittles"
+item_price = 2.0
+
+[node name="MagicButton7" parent="GridContainer" instance=ExtResource("1_ma6oy")]
+self_modulate = Color(1, 0, 1, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+autowrap_mode = 3
+item_name = "Starburst"
+item_price = 2.0
+
+[node name="MagicButton8" parent="GridContainer" instance=ExtResource("1_ma6oy")]
+self_modulate = Color(1, 0, 1, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+autowrap_mode = 3
+item_name = "Hershey Bar"
+item_price = 2.0
+
+[node name="MagicButton9" parent="GridContainer" instance=ExtResource("1_ma6oy")]
+self_modulate = Color(1, 0, 1, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+autowrap_mode = 3
+item_name = "Reese's"
+item_price = 2.0
+
+[node name="MagicButton17" parent="GridContainer" instance=ExtResource("1_ma6oy")]
+self_modulate = Color(0.0431373, 1, 1, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+autowrap_mode = 3
+item_name = "Juicy Drops"
+item_price = 1.5
+
+[node name="MagicButton14" parent="GridContainer" instance=ExtResource("1_ma6oy")]
+self_modulate = Color(0.0431373, 1, 1, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+autowrap_mode = 3
+item_name = "Push Pops"
+item_price = 1.5
+
+[node name="MagicButton15" parent="GridContainer" instance=ExtResource("1_ma6oy")]
+self_modulate = Color(0.0431373, 1, 1, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+autowrap_mode = 3
+item_name = "Bottle Pops"
+item_price = 1.5
+
+[node name="MagicButton5" parent="GridContainer" instance=ExtResource("1_ma6oy")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+autowrap_mode = 3
+item_name = "M&M Mini"
+item_price = 1.0
+
+[node name="MagicButton11" parent="GridContainer" instance=ExtResource("1_ma6oy")]
+self_modulate = Color(1, 1, 0, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+autowrap_mode = 3
+item_name = "Airheads"
+item_price = 0.5
+
+[node name="MagicButton12" parent="GridContainer" instance=ExtResource("1_ma6oy")]
+self_modulate = Color(1, 1, 0, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+autowrap_mode = 3
+item_name = "Blow Pops"
+item_price = 0.5
+
+[node name="MagicButton13" parent="GridContainer" instance=ExtResource("1_ma6oy")]
+self_modulate = Color(1, 1, 0, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+autowrap_mode = 3
+item_name = "Ring Pops"
+item_price = 0.5
+
+[node name="MagicButton16" parent="GridContainer" instance=ExtResource("1_ma6oy")]
+self_modulate = Color(1, 1, 0, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+autowrap_mode = 3
+item_name = "Cow Tails"
+item_price = 0.5
+
+[node name="MagicButton18" parent="GridContainer" instance=ExtResource("1_ma6oy")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+autowrap_mode = 3
+item_name = "Ice Pops"
+item_price = 0.25
+
+[node name="BackButton" type="Button" parent="GridContainer"]
+self_modulate = Color(1, 0, 0, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 50
+text = "Return
+"
+
+[connection signal="pressed" from="GridContainer/BackButton" to="." method="_on_back_button_pressed"]

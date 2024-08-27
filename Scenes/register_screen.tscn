@@ -1,16 +1,21 @@
-[gd_scene load_steps=9 format=3 uid="uid://bllvejrl27rka"]
+[gd_scene load_steps=11 format=3 uid="uid://bllvejrl27rka"]
 
 [ext_resource type="Script" path="res://Scripts/register_screen.gd" id="1_trpjd"]
+[ext_resource type="PackedScene" uid="uid://oyy7dm0lnk6y" path="res://Scenes/keypad.tscn" id="2_7jp82"]
+[ext_resource type="PackedScene" uid="uid://dptdjki4gb07o" path="res://Scenes/food_screen.tscn" id="3_ijylx"]
+[ext_resource type="PackedScene" uid="uid://cob61wmg76a8m" path="res://Scenes/candy_screen.tscn" id="4_8e44c"]
+[ext_resource type="PackedScene" uid="uid://bgpv6arbfterh" path="res://Scenes/drinks_screen.tscn" id="5_hs337"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_blgj1"]
 font_size = 32
 
-[sub_resource type="LabelSettings" id="LabelSettings_kvjyf"]
-font_size = 50
-
 [sub_resource type="LabelSettings" id="LabelSettings_l5s7s"]
 font_size = 64
 font_color = Color(0, 0.631373, 0.0666667, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_a542i"]
+font_size = 40
+font_color = Color(0, 0.631373, 0.8, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_sx0lm"]
 font_size = 64
@@ -19,14 +24,6 @@ font_color = Color(0.976471, 0.113725, 0, 1)
 [sub_resource type="LabelSettings" id="LabelSettings_my17f"]
 font_size = 48
 font_color = Color(1, 1, 0.0352941, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_3ojc6"]
-font_size = 48
-font_color = Color(0.0431373, 1, 0.0352941, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_sw3dp"]
-font_size = 64
-font_color = Color(1, 1, 0.0196078, 1)
 
 [node name="RegisterScreen" type="Control"]
 layout_mode = 3
@@ -148,13 +145,10 @@ grow_vertical = 2
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 2
 
-[node name="ConsoleWindow" type="Label" parent="VBoxContainer/HBoxContainer/ColorRect/ScrollContainer"]
+[node name="ItemWindow" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/ColorRect/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 1
-text = "
-"
-label_settings = SubResource("LabelSettings_kvjyf")
+size_flags_vertical = 3
 
 [node name="CashBox" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
@@ -231,15 +225,29 @@ label_settings = SubResource("LabelSettings_l5s7s")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CashTendered" type="LineEdit" parent="VBoxContainer/HBoxContainer/CashBox"]
-custom_minimum_size = Vector2(200, 100)
+[node name="AmountInput" type="Button" parent="VBoxContainer/HBoxContainer/CashBox"]
+custom_minimum_size = Vector2(200, 125)
 layout_mode = 2
-theme_override_colors/font_placeholder_color = Color(0, 1, 0.72549, 1)
-theme_override_colors/font_color = Color(0, 0.780392, 0, 1)
-theme_override_font_sizes/font_size = 38
-placeholder_text = "Enter Amt"
-alignment = 1
-virtual_keyboard_type = 3
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/CashBox/AmountInput"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -36.5
+offset_top = -44.0
+offset_right = 36.5
+offset_bottom = 44.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "AMOUNT"
+label_settings = SubResource("LabelSettings_a542i")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
@@ -282,40 +290,21 @@ grow_vertical = 2
 text = "Total:"
 label_settings = SubResource("LabelSettings_my17f")
 
-[node name="TenderDisplay" type="Label" parent="VBoxContainer/HBoxContainer2/ColorRect"]
+[node name="Keypad" parent="." instance=ExtResource("2_7jp82")]
+visible = false
 layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -141.0
-offset_top = -33.5
-offset_bottom = 33.5
-grow_horizontal = 0
-grow_vertical = 2
-text = "Tendered: "
-label_settings = SubResource("LabelSettings_3ojc6")
 
-[node name="PayButton" type="Button" parent="VBoxContainer/HBoxContainer2"]
-custom_minimum_size = Vector2(200, 125)
-layout_mode = 2
-
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2/PayButton"]
+[node name="FoodScreen" parent="." instance=ExtResource("3_ijylx")]
+visible = false
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -60.0
-offset_top = -44.0
-offset_right = 60.0
-offset_bottom = 44.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "PAY"
-label_settings = SubResource("LabelSettings_sw3dp")
+
+[node name="CandyScreen" parent="." instance=ExtResource("4_8e44c")]
+visible = false
+layout_mode = 1
+
+[node name="DrinksScreen" parent="." instance=ExtResource("5_hs337")]
+visible = false
+layout_mode = 1
 
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/VBoxContainer/FoodButton" to="." method="_on_food_button_press"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/VBoxContainer/DrinkButton" to="." method="_on_drink_button_press"]
@@ -323,6 +312,5 @@ label_settings = SubResource("LabelSettings_sw3dp")
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/CashBox/5Box" to="." method="_on_five_dollar_press"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/CashBox/10Box" to="." method="_on_ten_dollar_press"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/CashBox/20Box" to="." method="_on_twenty_dollar_press"]
-[connection signal="text_changed" from="VBoxContainer/HBoxContainer/CashBox/CashTendered" to="." method="_on_tendered_amount_entered"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/CashBox/AmountInput" to="." method="_on_amount_input_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer2/MenuButton" to="." method="_on_menu_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer2/PayButton" to="." method="_on_pay_press"]
