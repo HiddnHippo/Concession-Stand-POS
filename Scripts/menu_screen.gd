@@ -2,7 +2,7 @@ extends Control
 
 signal open_register
 signal open_reports
-signal debugging_option
+
 
 var file_path: String = str("user://", Time.get_date_string_from_system(), "-report.dat")
 var previous_text: String = ""
@@ -21,7 +21,8 @@ func _on_reports_button_press():
 	
 	
 func _on_manage_button_press():
-	debugging_option.emit()
+	pass
+	
 	
 func _on_quit_button_press():
 	get_tree().quit()
@@ -34,14 +35,15 @@ func save_reports(report, total, count):
 		if previous_report is Dictionary:
 			for item in report:
 				if previous_report.has(item):
-					var quantity = previous_report[item]
-					quantity += 1
-					previous_report[item] = quantity
+					var previous_quantity = previous_report[item]
+					var quantity_to_add = report[item]
+					previous_report[item] = previous_quantity + quantity_to_add
 				else:
 					previous_report.merge(report)
 					
 		file = FileAccess.open(file_path, FileAccess.WRITE)
 		file.store_var(previous_report)
+		file.close()
 		print(previous_report)
 	else:
 		var file = FileAccess.open(file_path, FileAccess.WRITE)

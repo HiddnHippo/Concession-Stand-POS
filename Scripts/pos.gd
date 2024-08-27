@@ -13,7 +13,6 @@ var customer_count: int
 func _ready():
 	menu_screen.open_register.connect(_on_open_register_screen)
 	menu_screen.open_reports.connect(_on_open_reports_screen)
-	menu_screen.debugging_option.connect(save_reports)
 	
 	register_screen.main_menu.connect(_on_open_main_menu)
 	register_screen.insufficient_funds.connect(_on_insufficient_funds)

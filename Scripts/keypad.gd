@@ -18,7 +18,6 @@ func _on_key_one_pressed() -> void:
 	number_entry = "1"
 	
 
-
 func _on_key_two_pressed() -> void:
 	number_entry = "2"
 

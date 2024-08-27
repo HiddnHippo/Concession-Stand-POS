@@ -96,6 +96,7 @@ func _on_menu_button_pressed():
 	hide()
 	clear_transaction()
 	save_sales_report.emit(sales_report, sales_total, customer_count)
+	sales_report = {}
 	main_menu.emit()
 	
 	
