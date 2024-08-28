@@ -1,21 +1,14 @@
-[gd_scene load_steps=11 format=3 uid="uid://bllvejrl27rka"]
+[gd_scene load_steps=10 format=3 uid="uid://bllvejrl27rka"]
 
 [ext_resource type="Script" path="res://Scripts/register_screen.gd" id="1_trpjd"]
 [ext_resource type="PackedScene" uid="uid://oyy7dm0lnk6y" path="res://Scenes/keypad.tscn" id="2_7jp82"]
+[ext_resource type="PackedScene" uid="uid://dd5njfnkv6kad" path="res://Scenes/payment_buttons.tscn" id="2_dvevk"]
 [ext_resource type="PackedScene" uid="uid://dptdjki4gb07o" path="res://Scenes/food_screen.tscn" id="3_ijylx"]
 [ext_resource type="PackedScene" uid="uid://cob61wmg76a8m" path="res://Scenes/candy_screen.tscn" id="4_8e44c"]
 [ext_resource type="PackedScene" uid="uid://bgpv6arbfterh" path="res://Scenes/drinks_screen.tscn" id="5_hs337"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_blgj1"]
 font_size = 32
-
-[sub_resource type="LabelSettings" id="LabelSettings_l5s7s"]
-font_size = 64
-font_color = Color(0, 0.631373, 0.0666667, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_a542i"]
-font_size = 40
-font_color = Color(0, 0.631373, 0.8, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_sx0lm"]
 font_size = 64
@@ -56,17 +49,15 @@ layout_mode = 2
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(0, 100)
+[node name="ScreenButtons" type="GridContainer" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 0
 
-[node name="FoodButton" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="FoodButton" type="Button" parent="VBoxContainer/HBoxContainer/ScreenButtons"]
 custom_minimum_size = Vector2(200, 150)
 layout_mode = 2
 size_flags_horizontal = 0
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/FoodButton"]
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/ScreenButtons/FoodButton"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -84,12 +75,12 @@ label_settings = SubResource("LabelSettings_blgj1")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="DrinkButton" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="DrinkButton" type="Button" parent="VBoxContainer/HBoxContainer/ScreenButtons"]
 custom_minimum_size = Vector2(200, 150)
 layout_mode = 2
 size_flags_horizontal = 0
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/DrinkButton"]
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/ScreenButtons/DrinkButton"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -107,12 +98,12 @@ label_settings = SubResource("LabelSettings_blgj1")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CandyButton" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="CandyButton" type="Button" parent="VBoxContainer/HBoxContainer/ScreenButtons"]
 custom_minimum_size = Vector2(200, 150)
 layout_mode = 2
 size_flags_horizontal = 0
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/CandyButton"]
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/ScreenButtons/CandyButton"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -129,6 +120,27 @@ text = "Candy"
 label_settings = SubResource("LabelSettings_blgj1")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="MenuButton" type="Button" parent="VBoxContainer/HBoxContainer/ScreenButtons"]
+custom_minimum_size = Vector2(200, 125)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/ScreenButtons/MenuButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -60.0
+offset_top = -44.0
+offset_right = 60.0
+offset_bottom = 44.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Menu
+"
+label_settings = SubResource("LabelSettings_sx0lm")
 
 [node name="ColorRect" type="ColorRect" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
@@ -153,132 +165,47 @@ size_flags_vertical = 3
 [node name="CashBox" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="5Box" type="Button" parent="VBoxContainer/HBoxContainer/CashBox"]
-custom_minimum_size = Vector2(200, 125)
+[node name="CashButtons" type="GridContainer" parent="VBoxContainer/HBoxContainer/CashBox"]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
+columns = 2
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/CashBox/5Box"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -36.5
-offset_top = -44.0
-offset_right = 36.5
-offset_bottom = 44.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "$5"
-label_settings = SubResource("LabelSettings_l5s7s")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="10Box" type="Button" parent="VBoxContainer/HBoxContainer/CashBox"]
-custom_minimum_size = Vector2(200, 125)
+[node name="Exact" parent="VBoxContainer/HBoxContainer/CashBox/CashButtons" instance=ExtResource("2_dvevk")]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/CashBox/10Box"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -36.5
-offset_top = -44.0
-offset_right = 36.5
-offset_bottom = 44.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "$10"
-label_settings = SubResource("LabelSettings_l5s7s")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="20Box" type="Button" parent="VBoxContainer/HBoxContainer/CashBox"]
-custom_minimum_size = Vector2(200, 125)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/CashBox/20Box"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -36.5
-offset_top = -44.0
-offset_right = 36.5
-offset_bottom = 44.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "$20"
-label_settings = SubResource("LabelSettings_l5s7s")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="AmountInput" type="Button" parent="VBoxContainer/HBoxContainer/CashBox"]
-custom_minimum_size = Vector2(200, 125)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/CashBox/AmountInput"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -36.5
-offset_top = -44.0
-offset_right = 36.5
-offset_bottom = 44.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "AMOUNT"
-label_settings = SubResource("LabelSettings_a542i")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
-layout_mode = 2
-
-[node name="MenuButton" type="Button" parent="VBoxContainer/HBoxContainer2"]
-custom_minimum_size = Vector2(200, 125)
-layout_mode = 2
-
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2/MenuButton"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -60.0
-offset_top = -44.0
-offset_right = 60.0
-offset_bottom = 44.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Menu
+text = "$1
 "
-label_settings = SubResource("LabelSettings_sx0lm")
+exact_button = true
 
-[node name="ColorRect" type="ColorRect" parent="VBoxContainer/HBoxContainer2"]
+[node name="RoundUp" parent="VBoxContainer/HBoxContainer/CashBox/CashButtons" instance=ExtResource("2_dvevk")]
+layout_mode = 2
+text = "$1
+"
+round_up_button = true
+
+[node name="PaymentButtons3" parent="VBoxContainer/HBoxContainer/CashBox/CashButtons" instance=ExtResource("2_dvevk")]
+layout_mode = 2
+dollar_amount = "5"
+
+[node name="PaymentButtons4" parent="VBoxContainer/HBoxContainer/CashBox/CashButtons" instance=ExtResource("2_dvevk")]
+layout_mode = 2
+dollar_amount = "10"
+
+[node name="PaymentButtons5" parent="VBoxContainer/HBoxContainer/CashBox/CashButtons" instance=ExtResource("2_dvevk")]
+layout_mode = 2
+dollar_amount = "20"
+
+[node name="AmountButton" type="Button" parent="VBoxContainer/HBoxContainer/CashBox/CashButtons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 35
+text = "Amount
+"
+
+[node name="ColorRect2" type="ColorRect" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 3
 color = Color(0, 0, 0, 1)
 
-[node name="TotalDisplay" type="Label" parent="VBoxContainer/HBoxContainer2/ColorRect"]
+[node name="TotalDisplay" type="Label" parent="VBoxContainer/ColorRect2"]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -306,11 +233,8 @@ layout_mode = 1
 visible = false
 layout_mode = 1
 
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/VBoxContainer/FoodButton" to="." method="_on_food_button_press"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/VBoxContainer/DrinkButton" to="." method="_on_drink_button_press"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/VBoxContainer/CandyButton" to="." method="_on_candy_button_press"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/CashBox/5Box" to="." method="_on_five_dollar_press"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/CashBox/10Box" to="." method="_on_ten_dollar_press"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/CashBox/20Box" to="." method="_on_twenty_dollar_press"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/CashBox/AmountInput" to="." method="_on_amount_input_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer2/MenuButton" to="." method="_on_menu_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/ScreenButtons/FoodButton" to="." method="_on_food_button_press"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/ScreenButtons/DrinkButton" to="." method="_on_drink_button_press"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/ScreenButtons/CandyButton" to="." method="_on_candy_button_press"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/ScreenButtons/MenuButton" to="." method="_on_menu_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/CashBox/CashButtons/AmountButton" to="." method="_on_amount_input_pressed"]

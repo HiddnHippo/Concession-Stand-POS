@@ -44,9 +44,9 @@ func save_reports(report, total, count):
 		file = FileAccess.open(file_path, FileAccess.WRITE)
 		file.store_var(previous_report)
 		file.close()
-		print(previous_report)
 	else:
 		var file = FileAccess.open(file_path, FileAccess.WRITE)
 		file.store_var(report)
 		file.close()
+		print(report)
 	report = {}

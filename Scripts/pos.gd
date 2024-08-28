@@ -52,7 +52,7 @@ func _on_save_sales_report(_sales_report, _sales_total, _customer_count):
 	
 func _on_open_reports_screen():
 	reports_screen.show()
-	reports_screen.print_report()
+	reports_screen.hide_text()
 
 
 func save_reports():

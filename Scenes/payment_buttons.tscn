@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://dd5njfnkv6kad"]
+
+[ext_resource type="Script" path="res://Scripts/payment_buttons.gd" id="1_iyvnc"]
+[ext_resource type="AudioStream" uid="uid://dkp06my6735ys" path="res://Assets/Sounds/buttonclick.mp3" id="2_7eqb7"]
+
+[node name="PaymentButtons" type="Button" groups=["payment_buttons"]]
+custom_minimum_size = Vector2(150, 150)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+script = ExtResource("1_iyvnc")
+button_sound = ExtResource("2_7eqb7")
+
+[connection signal="pressed" from="." to="." method="_on_payment_button_pressed"]

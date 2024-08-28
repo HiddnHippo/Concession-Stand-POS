@@ -23,10 +23,14 @@ var money_given: float = 0.0:
 	set(val):
 		tendered_amount += val
 		val = 0
+		
+var payment_types
 
-@onready var item_window = $VBoxContainer/HBoxContainer/ColorRect/ScrollContainer/ItemWindow
-@onready var total_display: Label = $VBoxContainer/HBoxContainer2/ColorRect/TotalDisplay
-@onready var keypad: Panel = $Keypad
+@onready var item_window: VBoxContainer = $VBoxContainer/HBoxContainer/ColorRect/ScrollContainer/ItemWindow
+@onready var total_display: Label = $VBoxContainer/ColorRect2/TotalDisplay
+
+
+@onready var keypad: Control = $Keypad
 @onready var food_screen = $FoodScreen
 @onready var candy_screen = $CandyScreen
 @onready var drinks_screen = $DrinksScreen
@@ -44,6 +48,16 @@ func _ready():
 	var items = get_tree().get_nodes_in_group("items")
 	for i in items:
 		i.selected_item.connect(_on_add_item)
+		
+	payment_types = get_tree().get_nodes_in_group("payment_buttons")
+	for p in payment_types:
+		p.payment_key_pressed.connect(_on_payment_key_pressed)
+	
+
+func _on_payment_key_pressed(amt):
+	money_given = amt.to_float()
+	pay()
+	
 	
 func _on_food_button_press():
 	food_screen.show()
@@ -55,21 +69,6 @@ func _on_drink_button_press():
 	
 func _on_candy_button_press():
 	candy_screen.show()
-	
-	
-func _on_five_dollar_press():
-	money_given += 5
-	pay()
-	
-	
-func _on_ten_dollar_press():
-	money_given += 10
-	pay()
-	
-	
-func _on_twenty_dollar_press():
-	money_given += 20
-	pay()
 	
 	
 func pay():
@@ -95,8 +94,6 @@ func pay():
 func _on_menu_button_pressed():
 	hide()
 	clear_transaction()
-	save_sales_report.emit(sales_report, sales_total, customer_count)
-	sales_report = {}
 	main_menu.emit()
 	
 	
@@ -117,13 +114,20 @@ func _on_add_item(item_name:String, price:float):
 	p.update_item(item_name, price)
 	p.remove_item.connect(_on_remove_item)
 	subtotal += price
+	update_context_buttons()
 	
 	
 func _on_remove_item(item):
 	item.queue_free()
 	subtotal -= item.item_price
+	update_context_buttons()
 	
-	
+
+func update_context_buttons():
+	for payment_buttons in payment_types:
+		payment_buttons.update_context_buttons(total)
+		
+		
 func calculate_change(amt):
 	var change = amt - total
 	return_change.emit(change)
@@ -136,6 +140,9 @@ func clear_transaction():
 	subtotal = 0.0
 	tendered_amount = 0.0
 	money_given = 0.0
+	customer_count += 1
+	if payment_types != null:
+		update_context_buttons()
 	for c in item_window.get_children():
 		add_to_sales_report(c)
 		c.queue_free()
@@ -150,3 +157,5 @@ func add_to_sales_report(item):
 		var temp_dictionary = {str(item.item_name):1}
 		sales_report.merge(temp_dictionary)
 	sales_total += item.item_price
+	save_sales_report.emit(sales_report, sales_total, customer_count)
+	sales_report = {}

@@ -6,7 +6,7 @@
 font_size = 32
 
 [node name="ItemLine" type="PanelContainer"]
-custom_minimum_size = Vector2(700, 75)
+custom_minimum_size = Vector2(500, 75)
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_pold5")

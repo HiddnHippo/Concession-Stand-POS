@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bgpv6arbfterh"]
 
-[ext_resource type="PackedScene" uid="uid://oyk7n01764cn" path="res://Scenes/magic_button.tscn" id="1_ma6oy"]
+[ext_resource type="PackedScene" uid="uid://oyk7n01764cn" path="res://Scenes/item_button.tscn" id="1_ma6oy"]
 [ext_resource type="Script" path="res://Scripts/drinks_screen.gd" id="1_ols6x"]
 
 [node name="DrinksScreen" type="Control"]

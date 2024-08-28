@@ -16,6 +16,10 @@ config/features=PackedStringArray("4.3", "Forward Plus")
 boot_splash/show_image=false
 config/icon="res://icon.svg"
 
+[autoload]
+
+SoundEngine="*res://Scenes/sound_engine.tscn"
+
 [display]
 
 window/stretch/mode="canvas_items"
@@ -23,6 +27,8 @@ window/stretch/mode="canvas_items"
 [global_group]
 
 items=""
+cash_buttons=""
+payment_buttons=""
 
 [rendering]
 

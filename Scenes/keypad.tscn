@@ -1,15 +1,27 @@
-[gd_scene load_steps=4 format=3 uid="uid://oyy7dm0lnk6y"]
+[gd_scene load_steps=5 format=3 uid="uid://oyy7dm0lnk6y"]
 
 [ext_resource type="Script" path="res://Scripts/keypad.gd" id="1_3k0o8"]
+[ext_resource type="PackedScene" uid="uid://db6vr6aq6viar" path="res://Scenes/cash_buttons.tscn" id="2_g6j6p"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h8fg0"]
-bg_color = Color(1, 1, 1, 1)
+bg_color = Color(0.0352941, 0.815686, 0.211765, 1)
+expand_margin_top = 9.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_scvab"]
 font_size = 32
 
-[node name="Keypad" type="Panel"]
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3k0o8")
+
+[node name="Keypad" type="Panel" parent="."]
 custom_minimum_size = Vector2(450, 600)
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -24,9 +36,8 @@ grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_h8fg0")
-script = ExtResource("1_3k0o8")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="Keypad"]
 custom_minimum_size = Vector2(400, 600)
 layout_mode = 1
 anchors_preset = 8
@@ -42,17 +53,13 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 21
 
-[node name="ColorRect2" type="ColorRect" parent="VBoxContainer"]
-layout_mode = 2
-
-[node name="ColorRect" type="ColorRect" parent="VBoxContainer"]
+[node name="ColorRect" type="ColorRect" parent="Keypad/VBoxContainer"]
 custom_minimum_size = Vector2(420, 50)
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 4
 color = Color(0.0475577, 0.0475576, 0.0475576, 1)
 
-[node name="Label" type="Label" parent="VBoxContainer/ColorRect"]
+[node name="Label" type="Label" parent="Keypad/VBoxContainer/ColorRect"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -69,107 +76,74 @@ label_settings = SubResource("LabelSettings_scvab")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="FirstRow" type="HBoxContainer" parent="VBoxContainer"]
+[node name="ClearButton" type="Button" parent="Keypad/VBoxContainer/ColorRect"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_top = -4.0
+offset_bottom = 4.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "X"
+
+[node name="CashButtons" type="GridContainer" parent="Keypad/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_constants/separation = 10
+columns = 3
 
-[node name="KeyOne" type="Button" parent="VBoxContainer/FirstRow"]
-custom_minimum_size = Vector2(125, 100)
+[node name="CashButtons" parent="Keypad/VBoxContainer/CashButtons" instance=ExtResource("2_g6j6p")]
 layout_mode = 2
-theme_override_font_sizes/font_size = 64
-text = "1"
+button_amount = "1"
 
-[node name="KeyTwo" type="Button" parent="VBoxContainer/FirstRow"]
-custom_minimum_size = Vector2(125, 100)
+[node name="CashButtons2" parent="Keypad/VBoxContainer/CashButtons" instance=ExtResource("2_g6j6p")]
 layout_mode = 2
-theme_override_font_sizes/font_size = 64
-text = "2"
+button_amount = "2"
 
-[node name="KeyThree" type="Button" parent="VBoxContainer/FirstRow"]
-custom_minimum_size = Vector2(125, 100)
+[node name="CashButtons3" parent="Keypad/VBoxContainer/CashButtons" instance=ExtResource("2_g6j6p")]
 layout_mode = 2
-theme_override_font_sizes/font_size = 64
-text = "3"
+button_amount = "3"
 
-[node name="SecondRow" type="HBoxContainer" parent="VBoxContainer"]
+[node name="CashButtons4" parent="Keypad/VBoxContainer/CashButtons" instance=ExtResource("2_g6j6p")]
 layout_mode = 2
-size_flags_horizontal = 4
-theme_override_constants/separation = 10
+button_amount = "4"
 
-[node name="KeyFour" type="Button" parent="VBoxContainer/SecondRow"]
-custom_minimum_size = Vector2(125, 100)
+[node name="CashButtons5" parent="Keypad/VBoxContainer/CashButtons" instance=ExtResource("2_g6j6p")]
 layout_mode = 2
-theme_override_font_sizes/font_size = 64
-text = "4"
+button_amount = "5"
 
-[node name="KeyFive" type="Button" parent="VBoxContainer/SecondRow"]
-custom_minimum_size = Vector2(125, 100)
+[node name="CashButtons6" parent="Keypad/VBoxContainer/CashButtons" instance=ExtResource("2_g6j6p")]
 layout_mode = 2
-theme_override_font_sizes/font_size = 64
-text = "5"
+button_amount = "6"
 
-[node name="KeySix" type="Button" parent="VBoxContainer/SecondRow"]
-custom_minimum_size = Vector2(125, 100)
+[node name="CashButtons7" parent="Keypad/VBoxContainer/CashButtons" instance=ExtResource("2_g6j6p")]
 layout_mode = 2
-theme_override_font_sizes/font_size = 64
-text = "6"
+button_amount = "7"
 
-[node name="ThirdRow" type="HBoxContainer" parent="VBoxContainer"]
+[node name="CashButtons8" parent="Keypad/VBoxContainer/CashButtons" instance=ExtResource("2_g6j6p")]
 layout_mode = 2
-size_flags_horizontal = 4
-theme_override_constants/separation = 10
+button_amount = "8"
 
-[node name="KeySeven" type="Button" parent="VBoxContainer/ThirdRow"]
-custom_minimum_size = Vector2(125, 100)
+[node name="CashButtons9" parent="Keypad/VBoxContainer/CashButtons" instance=ExtResource("2_g6j6p")]
 layout_mode = 2
-theme_override_font_sizes/font_size = 64
-text = "7"
+button_amount = "9"
 
-[node name="KeyEight" type="Button" parent="VBoxContainer/ThirdRow"]
-custom_minimum_size = Vector2(125, 100)
+[node name="CashButtons10" parent="Keypad/VBoxContainer/CashButtons" instance=ExtResource("2_g6j6p")]
 layout_mode = 2
-theme_override_font_sizes/font_size = 64
-text = "8"
+button_amount = "."
 
-[node name="KeyNine" type="Button" parent="VBoxContainer/ThirdRow"]
-custom_minimum_size = Vector2(125, 100)
+[node name="CashButtons11" parent="Keypad/VBoxContainer/CashButtons" instance=ExtResource("2_g6j6p")]
 layout_mode = 2
-theme_override_font_sizes/font_size = 64
-text = "9"
+button_amount = "0"
 
-[node name="FourthRow" type="HBoxContainer" parent="VBoxContainer"]
+[node name="EnterButton" type="Button" parent="Keypad/VBoxContainer/CashButtons"]
 layout_mode = 2
-size_flags_horizontal = 4
-theme_override_constants/separation = 10
+theme_override_font_sizes/font_size = 40
+text = "Enter"
 
-[node name="KeyDot" type="Button" parent="VBoxContainer/FourthRow"]
-custom_minimum_size = Vector2(125, 100)
-layout_mode = 2
-theme_override_font_sizes/font_size = 64
-text = "."
-
-[node name="KeyZero" type="Button" parent="VBoxContainer/FourthRow"]
-custom_minimum_size = Vector2(125, 100)
-layout_mode = 2
-theme_override_font_sizes/font_size = 64
-text = "0"
-
-[node name="KeyEnter" type="Button" parent="VBoxContainer/FourthRow"]
-custom_minimum_size = Vector2(125, 100)
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "ENTER"
-
-[connection signal="pressed" from="VBoxContainer/FirstRow/KeyOne" to="." method="_on_key_one_pressed"]
-[connection signal="pressed" from="VBoxContainer/FirstRow/KeyTwo" to="." method="_on_key_two_pressed"]
-[connection signal="pressed" from="VBoxContainer/FirstRow/KeyThree" to="." method="_on_key_three_pressed"]
-[connection signal="pressed" from="VBoxContainer/SecondRow/KeyFour" to="." method="_on_key_four_pressed"]
-[connection signal="pressed" from="VBoxContainer/SecondRow/KeyFive" to="." method="_on_key_five_pressed"]
-[connection signal="pressed" from="VBoxContainer/SecondRow/KeySix" to="." method="_on_key_six_pressed"]
-[connection signal="pressed" from="VBoxContainer/ThirdRow/KeySeven" to="." method="_on_key_seven_pressed"]
-[connection signal="pressed" from="VBoxContainer/ThirdRow/KeyEight" to="." method="_on_key_eight_pressed"]
-[connection signal="pressed" from="VBoxContainer/ThirdRow/KeyNine" to="." method="_on_key_nine_pressed"]
-[connection signal="pressed" from="VBoxContainer/FourthRow/KeyDot" to="." method="_on_key_dot_pressed"]
-[connection signal="pressed" from="VBoxContainer/FourthRow/KeyZero" to="." method="_on_key_zero_pressed"]
-[connection signal="pressed" from="VBoxContainer/FourthRow/KeyEnter" to="." method="_on_key_enter_pressed"]
+[connection signal="pressed" from="Keypad/VBoxContainer/ColorRect/ClearButton" to="." method="reset_keypad"]
+[connection signal="pressed" from="Keypad/VBoxContainer/CashButtons/EnterButton" to="." method="_on_key_enter_pressed"]

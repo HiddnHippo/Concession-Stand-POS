@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dptdjki4gb07o"]
 
 [ext_resource type="Script" path="res://Scripts/food_screen.gd" id="1_0viqj"]
-[ext_resource type="PackedScene" uid="uid://oyk7n01764cn" path="res://Scenes/magic_button.tscn" id="2_6vd0y"]
+[ext_resource type="PackedScene" uid="uid://oyk7n01764cn" path="res://Scenes/item_button.tscn" id="2_6vd0y"]
 
 [node name="FoodScreen" type="Control"]
 layout_mode = 3
