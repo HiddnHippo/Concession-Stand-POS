@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="MenuItem" load_steps=2 format=3 uid="uid://ctyneb37bwndl"]
+
+[ext_resource type="Script" path="res://Menu/menu_item.gd" id="1_mcp5i"]
+
+[resource]
+script = ExtResource("1_mcp5i")
+item_name = "Blow-Pop"
+item_price = 0.5
+item_type = 2

@@ -11,5 +11,4 @@ func _ready():
 	
 func _on_button_pressed():
 	cash_input_entry.emit(button_amount)
-	
 	SoundEngine.play_sound(button_sound)

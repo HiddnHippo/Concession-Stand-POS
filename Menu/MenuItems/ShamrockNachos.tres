@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="MenuItem" load_steps=2 format=3 uid="uid://c62iyy27uu08b"]
+
+[ext_resource type="Script" path="res://Menu/menu_item.gd" id="1_1gpyw"]
+
+[resource]
+script = ExtResource("1_1gpyw")
+item_name = "Shamrock Nachos"
+item_price = 7.0
+item_type = 1

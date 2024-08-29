@@ -22,7 +22,12 @@ SoundEngine="*res://Scenes/sound_engine.tscn"
 
 [display]
 
+window/size/mode=4
 window/stretch/mode="canvas_items"
+
+[editor]
+
+export/convert_text_resources_to_binary=false
 
 [global_group]
 

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="MenuItem" load_steps=2 format=3 uid="uid://db17d6spi6yq2"]
+
+[ext_resource type="Script" path="res://Menu/menu_item.gd" id="1_bkjin"]
+
+[resource]
+script = ExtResource("1_bkjin")
+item_name = "Ring-Pop"
+item_price = 0.5
+item_type = 2

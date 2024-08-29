@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="MenuItem" load_steps=2 format=3 uid="uid://biqj1tqjqhib1"]
+
+[ext_resource type="Script" path="res://Menu/menu_item.gd" id="1_a4xcw"]
+
+[resource]
+script = ExtResource("1_a4xcw")
+item_name = "Ice Pop"
+item_price = 0.25
+item_type = 2

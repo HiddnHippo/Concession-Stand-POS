@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="MenuItem" load_steps=2 format=3 uid="uid://i0d3optif2n"]
+
+[ext_resource type="Script" path="res://Menu/menu_item.gd" id="1_4f4i3"]
+
+[resource]
+script = ExtResource("1_4f4i3")
+item_name = "Shamdog"
+item_price = 6.0
+item_type = 1

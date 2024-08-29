@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="MenuItem" load_steps=2 format=3 uid="uid://bh1vqh0saqqfv"]
+
+[ext_resource type="Script" path="res://Menu/menu_item.gd" id="1_nvlwc"]
+
+[resource]
+script = ExtResource("1_nvlwc")
+item_name = "Pepsi"
+item_price = 3.0

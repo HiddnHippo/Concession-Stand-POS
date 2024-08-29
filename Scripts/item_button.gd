@@ -1,15 +1,21 @@
+@tool
 extends Button
 
-@export var item_name: String
-@export var item_price: float
-@export var button_sound: AudioStreamMP3
 
+@export var button_sound: AudioStreamMP3
+@export var menu_item: MenuItem
+
+	
 signal selected_item
 
 
 func _ready():
-	text = item_name
-
+	if menu_item:
+		if Engine.is_editor_hint():
+			text = menu_item.item_name
+		text = menu_item.item_name
+		
+			
 func _on_pressed() -> void:
-	selected_item.emit(item_name, item_price)
+	selected_item.emit(menu_item.item_name, menu_item.item_price)
 	SoundEngine.play_sound(button_sound)

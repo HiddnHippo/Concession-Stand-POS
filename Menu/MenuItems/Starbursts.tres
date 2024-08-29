@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="MenuItem" load_steps=2 format=3 uid="uid://b8opjxauq1d7y"]
+
+[ext_resource type="Script" path="res://Menu/menu_item.gd" id="1_3egkn"]
+
+[resource]
+script = ExtResource("1_3egkn")
+item_name = "Starbursts"
+item_price = 2.0
+item_type = 2

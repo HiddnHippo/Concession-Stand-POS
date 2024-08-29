@@ -1,7 +1,26 @@
-[gd_scene load_steps=3 format=3 uid="uid://dptdjki4gb07o"]
+[gd_scene load_steps=22 format=3 uid="uid://dptdjki4gb07o"]
 
 [ext_resource type="Script" path="res://Scripts/food_screen.gd" id="1_0viqj"]
 [ext_resource type="PackedScene" uid="uid://oyk7n01764cn" path="res://Scenes/item_button.tscn" id="2_6vd0y"]
+[ext_resource type="Resource" uid="uid://ehiur0rf0wwd" path="res://Menu/MenuItems/Hot Dog.tres" id="3_50bms"]
+[ext_resource type="StyleBox" uid="uid://dgyiiib3wxfa0" path="res://Assets/Styles/redbox.tres" id="3_m34le"]
+[ext_resource type="Resource" uid="uid://c42w1lwds15s1" path="res://Menu/MenuItems/Coneydog.tres" id="4_vtnvg"]
+[ext_resource type="Resource" uid="uid://i0d3optif2n" path="res://Menu/MenuItems/Shamdog.tres" id="5_m3tgl"]
+[ext_resource type="Resource" uid="uid://dahs7oy58aawv" path="res://Menu/MenuItems/ExtraCheese.tres" id="7_716eh"]
+[ext_resource type="StyleBox" uid="uid://dplw5r8vy4jdw" path="res://Assets/Styles/greenbox.tres" id="7_vl40u"]
+[ext_resource type="Resource" uid="uid://is8kgxk22vjn" path="res://Menu/MenuItems/Nachos & Cheese.tres" id="8_lirdr"]
+[ext_resource type="StyleBox" uid="uid://cxie750mj1x1" path="res://Assets/Styles/purplebox.tres" id="9_8sq8u"]
+[ext_resource type="Resource" uid="uid://ctmavbascv0jj" path="res://Menu/MenuItems/TouchdownNachos.tres" id="9_tcdle"]
+[ext_resource type="Resource" uid="uid://c62iyy27uu08b" path="res://Menu/MenuItems/ShamrockNachos.tres" id="10_mbkf7"]
+[ext_resource type="Resource" uid="uid://cqv64k5wjyoxu" path="res://Menu/MenuItems/ExtraMeat.tres" id="11_trimd"]
+[ext_resource type="Resource" uid="uid://d3v7mdbkmykek" path="res://Menu/MenuItems/SloppyJoe.tres" id="12_ivgna"]
+[ext_resource type="Resource" uid="uid://paxbmsvu47n3" path="res://Menu/MenuItems/HotChicken.tres" id="13_typ1w"]
+[ext_resource type="Resource" uid="uid://cbbwkffa41r6k" path="res://Menu/MenuItems/PulledPork.tres" id="14_aoqev"]
+[ext_resource type="StyleBox" uid="uid://bbhk0flxsqqvy" path="res://Assets/Styles/tealbox.tres" id="14_sd0m3"]
+[ext_resource type="Resource" uid="uid://b1670l6r33um8" path="res://Menu/MenuItems/Jalapenos.tres" id="15_egd0i"]
+[ext_resource type="Resource" uid="uid://byeg1mhqju43n" path="res://Menu/MenuItems/Chips.tres" id="16_3kp1j"]
+[ext_resource type="Resource" uid="uid://cb6ps1v3icpxc" path="res://Menu/MenuItems/Popcorn.tres" id="17_xvmsg"]
+[ext_resource type="StyleBox" uid="uid://5001kkigvfio" path="res://Assets/Styles/yellowbox.tres" id="19_sbws4"]
 
 [node name="FoodScreen" type="Control"]
 layout_mode = 3
@@ -31,123 +50,95 @@ grow_horizontal = 2
 grow_vertical = 2
 columns = 4
 
-[node name="MagicButton" parent="GridContainer" instance=ExtResource("2_6vd0y")]
-self_modulate = Color(1, 0, 0, 1)
+[node name="ItemButtons" parent="GridContainer" instance=ExtResource("2_6vd0y")]
 layout_mode = 2
-theme_override_font_sizes/font_size = 40
-autowrap_mode = 3
-item_name = "Hot Dog"
-item_price = 2.0
+theme_override_styles/normal = ExtResource("3_m34le")
+text = "Hot Dog"
+menu_item = ExtResource("3_50bms")
 
-[node name="MagicButton2" parent="GridContainer" instance=ExtResource("2_6vd0y")]
-self_modulate = Color(1, 0, 0, 1)
+[node name="ItemButtons2" parent="GridContainer" instance=ExtResource("2_6vd0y")]
 layout_mode = 2
-theme_override_font_sizes/font_size = 40
-autowrap_mode = 3
-item_name = "Coney Dog"
-item_price = 3.0
+theme_override_styles/normal = ExtResource("3_m34le")
+text = "Coney Dog"
+menu_item = ExtResource("4_vtnvg")
 
-[node name="MagicButton3" parent="GridContainer" instance=ExtResource("2_6vd0y")]
-self_modulate = Color(1, 0, 0, 1)
+[node name="ItemButtons14" parent="GridContainer" instance=ExtResource("2_6vd0y")]
 layout_mode = 2
-theme_override_font_sizes/font_size = 40
-autowrap_mode = 3
-item_name = "ShamDog"
-item_price = 6.0
+theme_override_styles/normal = ExtResource("3_m34le")
+text = "Shamdog"
+menu_item = ExtResource("5_m3tgl")
 
-[node name="MagicButton4" parent="GridContainer" instance=ExtResource("2_6vd0y")]
-self_modulate = Color(0, 1, 0, 1)
+[node name="ItemButtons3" parent="GridContainer" instance=ExtResource("2_6vd0y")]
 layout_mode = 2
-theme_override_font_sizes/font_size = 40
-autowrap_mode = 3
-item_name = "Extra Meat"
-item_price = 0.5
+theme_override_styles/normal = ExtResource("7_vl40u")
+text = "Extra Cheese"
+menu_item = ExtResource("7_716eh")
 
-[node name="MagicButton5" parent="GridContainer" instance=ExtResource("2_6vd0y")]
-self_modulate = Color(1, 0, 1, 1)
+[node name="ItemButtons4" parent="GridContainer" instance=ExtResource("2_6vd0y")]
 layout_mode = 2
-theme_override_font_sizes/font_size = 40
-autowrap_mode = 3
-item_name = "Nachos"
-item_price = 4.0
+theme_override_styles/normal = ExtResource("9_8sq8u")
+text = "Nachos & Cheese"
+menu_item = ExtResource("8_lirdr")
 
-[node name="MagicButton6" parent="GridContainer" instance=ExtResource("2_6vd0y")]
-self_modulate = Color(1, 0, 1, 1)
+[node name="ItemButtons5" parent="GridContainer" instance=ExtResource("2_6vd0y")]
 layout_mode = 2
-theme_override_font_sizes/font_size = 40
-autowrap_mode = 3
-item_name = "Touch Down Nachos"
-item_price = 5.0
+theme_override_styles/normal = ExtResource("9_8sq8u")
+text = "Touch Down Nachos"
+menu_item = ExtResource("9_tcdle")
 
-[node name="MagicButton7" parent="GridContainer" instance=ExtResource("2_6vd0y")]
-self_modulate = Color(1, 0, 1, 1)
+[node name="ItemButtons6" parent="GridContainer" instance=ExtResource("2_6vd0y")]
 layout_mode = 2
-theme_override_font_sizes/font_size = 40
-autowrap_mode = 3
-item_name = "Shamrock Nachos"
-item_price = 7.0
+theme_override_styles/normal = ExtResource("9_8sq8u")
+text = "Shamrock Nachos"
+menu_item = ExtResource("10_mbkf7")
 
-[node name="MagicButton8" parent="GridContainer" instance=ExtResource("2_6vd0y")]
-self_modulate = Color(0, 1, 0, 1)
+[node name="ItemButtons7" parent="GridContainer" instance=ExtResource("2_6vd0y")]
 layout_mode = 2
-theme_override_font_sizes/font_size = 40
-autowrap_mode = 3
-item_name = "Extra Cheese"
-item_price = 0.5
+theme_override_styles/normal = ExtResource("7_vl40u")
+text = "Extra Meat"
+menu_item = ExtResource("11_trimd")
 
-[node name="MagicButton9" parent="GridContainer" instance=ExtResource("2_6vd0y")]
-self_modulate = Color(0, 1, 1, 1)
+[node name="ItemButtons8" parent="GridContainer" instance=ExtResource("2_6vd0y")]
 layout_mode = 2
-theme_override_font_sizes/font_size = 40
-autowrap_mode = 3
-item_name = "Sloppy Joe"
-item_price = 5.0
+theme_override_styles/normal = ExtResource("14_sd0m3")
+text = "Sloppy Joe"
+menu_item = ExtResource("12_ivgna")
 
-[node name="MagicButton10" parent="GridContainer" instance=ExtResource("2_6vd0y")]
-self_modulate = Color(0, 1, 1, 1)
+[node name="ItemButtons9" parent="GridContainer" instance=ExtResource("2_6vd0y")]
 layout_mode = 2
-theme_override_font_sizes/font_size = 40
-autowrap_mode = 3
-item_name = "Hot Chicken"
-item_price = 5.0
+theme_override_styles/normal = ExtResource("14_sd0m3")
+text = "Hot Chicken"
+menu_item = ExtResource("13_typ1w")
 
-[node name="MagicButton11" parent="GridContainer" instance=ExtResource("2_6vd0y")]
-self_modulate = Color(0, 1, 1, 1)
+[node name="ItemButtons10" parent="GridContainer" instance=ExtResource("2_6vd0y")]
 layout_mode = 2
-theme_override_font_sizes/font_size = 40
-autowrap_mode = 3
-item_name = "Pulled Pork"
-item_price = 6.0
+theme_override_styles/normal = ExtResource("14_sd0m3")
+text = "Pulled Pork"
+menu_item = ExtResource("14_aoqev")
 
-[node name="MagicButton12" parent="GridContainer" instance=ExtResource("2_6vd0y")]
-self_modulate = Color(0, 1, 0, 1)
+[node name="ItemButtons11" parent="GridContainer" instance=ExtResource("2_6vd0y")]
 layout_mode = 2
-theme_override_font_sizes/font_size = 40
-autowrap_mode = 3
-item_name = "Jalapenos"
-item_price = 0.5
+theme_override_styles/normal = ExtResource("7_vl40u")
+text = "Jalapenos"
+menu_item = ExtResource("15_egd0i")
 
 [node name="Button" type="Button" parent="GridContainer"]
-self_modulate = Color(1, 0, 0, 1)
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = ExtResource("3_m34le")
 text = "Return
 "
 
-[node name="MagicButton13" parent="GridContainer" instance=ExtResource("2_6vd0y")]
-self_modulate = Color(1, 1, 0, 1)
+[node name="ItemButtons12" parent="GridContainer" instance=ExtResource("2_6vd0y")]
 layout_mode = 2
-theme_override_font_sizes/font_size = 40
-autowrap_mode = 3
-item_name = "Popcorn"
-item_price = 2.0
+theme_override_styles/normal = ExtResource("19_sbws4")
+text = "Chips"
+menu_item = ExtResource("16_3kp1j")
 
-[node name="MagicButton14" parent="GridContainer" instance=ExtResource("2_6vd0y")]
-self_modulate = Color(1, 1, 0, 1)
+[node name="ItemButtons13" parent="GridContainer" instance=ExtResource("2_6vd0y")]
 layout_mode = 2
-theme_override_font_sizes/font_size = 40
-autowrap_mode = 3
-item_name = "Chips"
-item_price = 1.0
+theme_override_styles/normal = ExtResource("19_sbws4")
+text = "Popcorn"
+menu_item = ExtResource("17_xvmsg")
 
 [connection signal="pressed" from="GridContainer/Button" to="." method="_on_exit_button_pressed"]

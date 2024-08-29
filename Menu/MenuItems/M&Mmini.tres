@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="MenuItem" load_steps=2 format=3 uid="uid://dnmkms7x25oes"]
+
+[ext_resource type="Script" path="res://Menu/menu_item.gd" id="1_xikia"]
+
+[resource]
+script = ExtResource("1_xikia")
+item_name = "M&M Mini"
+item_price = 1.0
+item_type = 2

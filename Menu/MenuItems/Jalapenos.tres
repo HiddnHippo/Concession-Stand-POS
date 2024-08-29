@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="MenuItem" load_steps=2 format=3 uid="uid://b1670l6r33um8"]
+
+[ext_resource type="Script" path="res://Menu/menu_item.gd" id="1_a7w2n"]
+
+[resource]
+script = ExtResource("1_a7w2n")
+item_name = "Jalapenos"
+item_price = 0.5
+item_type = 1

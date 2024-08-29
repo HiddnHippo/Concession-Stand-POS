@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="MenuItem" load_steps=2 format=3 uid="uid://paxbmsvu47n3"]
+
+[ext_resource type="Script" path="res://Menu/menu_item.gd" id="1_w6j8p"]
+
+[resource]
+script = ExtResource("1_w6j8p")
+item_name = "Hot Chicken"
+item_price = 5.0
+item_type = 1

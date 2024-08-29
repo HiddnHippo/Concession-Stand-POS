@@ -5,6 +5,7 @@ signal insufficient_funds
 signal return_change
 signal thank_you
 signal save_sales_report
+signal add_to_customer_total
 
 var subtotal: float = 0.0:
 	set(val):
@@ -15,7 +16,7 @@ var subtotal: float = 0.0:
 var total: float = 0.0
 var tendered_amount: float = 0.0
 
-var sales_report = {}
+var sales_report = {"Customer Count":0}
 var customer_count: int = 0
 var sales_total: float
 
@@ -88,7 +89,7 @@ func pay():
 	elif total == tendered_amount:
 		thank_you.emit()
 		clear_transaction()
-	customer_count += 1
+	add_to_customer_total.emit()
 		
 	
 func _on_menu_button_pressed():
@@ -140,7 +141,6 @@ func clear_transaction():
 	subtotal = 0.0
 	tendered_amount = 0.0
 	money_given = 0.0
-	customer_count += 1
 	if payment_types != null:
 		update_context_buttons()
 	for c in item_window.get_children():
@@ -156,6 +156,5 @@ func add_to_sales_report(item):
 	else:
 		var temp_dictionary = {str(item.item_name):1}
 		sales_report.merge(temp_dictionary)
-	sales_total += item.item_price
-	save_sales_report.emit(sales_report, sales_total, customer_count)
+	save_sales_report.emit(sales_report)
 	sales_report = {}
