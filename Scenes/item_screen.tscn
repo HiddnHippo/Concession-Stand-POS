@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=3 uid="uid://bw2rls52ltwr0"]
+
+[ext_resource type="Script" path="res://Scripts/item_screen.gd" id="1_kgv1n"]
+[ext_resource type="StyleBox" uid="uid://dgyiiib3wxfa0" path="res://Assets/Styles/redbox.tres" id="1_ssmab"]
+[ext_resource type="PackedScene" uid="uid://oyk7n01764cn" path="res://Scenes/item_button.tscn" id="2_cgg2b"]
+
+[node name="ItemScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kgv1n")
+item_button = ExtResource("2_cgg2b")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.259294, 0.259294, 0.259294, 1)
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 4
+
+[node name="ReturnButton" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = ExtResource("1_ssmab")
+text = "Return"
+
+[connection signal="pressed" from="GridContainer/ReturnButton" to="." method="_on_back_button_pressed"]

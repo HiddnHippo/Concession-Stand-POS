@@ -1,0 +1,209 @@
+[gd_scene load_steps=5 format=3 uid="uid://g7uqleqe0qfm"]
+
+[ext_resource type="Script" path="res://Scripts/management_screen.gd" id="1_3unyd"]
+[ext_resource type="StyleBox" uid="uid://dgyiiib3wxfa0" path="res://Assets/Styles/redbox.tres" id="1_8wqso"]
+[ext_resource type="StyleBox" uid="uid://cxie750mj1x1" path="res://Assets/Styles/purplebox.tres" id="3_0rrg1"]
+[ext_resource type="PackedScene" uid="uid://bw2rls52ltwr0" path="res://Scenes/item_screen.tscn" id="4_hjrv8"]
+
+[node name="ManagementScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3unyd")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.252028, 0.252028, 0.252028, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="ColorRect/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="ColorRect/VBoxContainer/ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -11.5
+offset_right = 576.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Menu Item Management"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="GridContainer" type="GridContainer" parent="ColorRect/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+columns = 2
+
+[node name="FoodButton" type="Button" parent="ColorRect/VBoxContainer/HBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Food"
+
+[node name="DrinkButton" type="Button" parent="ColorRect/VBoxContainer/HBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Drink"
+
+[node name="CandyButton" type="Button" parent="ColorRect/VBoxContainer/HBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Candy"
+
+[node name="CreateItem" type="Button" parent="ColorRect/VBoxContainer/HBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Create Item"
+autowrap_mode = 3
+
+[node name="Button" type="Button" parent="ColorRect/VBoxContainer/HBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = ExtResource("1_8wqso")
+text = "MENU"
+
+[node name="DeleteItem" type="Button" parent="ColorRect/VBoxContainer/HBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = ExtResource("3_0rrg1")
+text = "Delete"
+
+[node name="ColorRect" type="ColorRect" parent="ColorRect/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0, 0, 0, 1)
+
+[node name="ScrollContainer" type="ScrollContainer" parent="ColorRect/VBoxContainer/HBoxContainer/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ResourceButtonContainer" type="GridContainer" parent="ColorRect/VBoxContainer/HBoxContainer/ColorRect/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/h_separation = 4
+columns = 2
+
+[node name="Panel" type="Panel" parent="ColorRect/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(400, 400)
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="ColorRect/VBoxContainer/HBoxContainer/Panel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ItemName" type="LineEdit" parent="ColorRect/VBoxContainer/HBoxContainer/Panel/GridContainer"]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
+placeholder_text = "Menu Item Name"
+
+[node name="ItemPrice" type="LineEdit" parent="ColorRect/VBoxContainer/HBoxContainer/Panel/GridContainer"]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
+placeholder_text = "Menu Item Price"
+
+[node name="OptionButton" type="OptionButton" parent="ColorRect/VBoxContainer/HBoxContainer/Panel/GridContainer"]
+layout_mode = 2
+autowrap_mode = 3
+selected = 0
+item_count = 3
+popup/item_0/text = "Drink"
+popup/item_1/text = "Food"
+popup/item_1/id = 1
+popup/item_2/text = "Candy"
+popup/item_2/id = 2
+
+[node name="Control" type="Control" parent="ColorRect/VBoxContainer/HBoxContainer/Panel/GridContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect/VBoxContainer/HBoxContainer/Panel/GridContainer/Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="ColorRect/VBoxContainer/HBoxContainer/Panel/GridContainer/Control/HBoxContainer"]
+layout_mode = 2
+text = "Button Color: "
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="ColorRect/VBoxContainer/HBoxContainer/Panel/GridContainer/Control/HBoxContainer"]
+custom_minimum_size = Vector2(240, 40)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+
+[node name="LocationEdit" type="LineEdit" parent="ColorRect/VBoxContainer/HBoxContainer/Panel/GridContainer"]
+layout_mode = 2
+placeholder_text = "Button Location (0 to 20)"
+
+[node name="Button" type="Button" parent="ColorRect/VBoxContainer/HBoxContainer/Panel/GridContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+text = "Apply to Item"
+
+[node name="ColorRect" type="ColorRect" parent="ColorRect/VBoxContainer/HBoxContainer/Panel/GridContainer"]
+custom_minimum_size = Vector2(300, 250)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="ConsoleLabel" type="Label" parent="ColorRect/VBoxContainer/HBoxContainer/Panel/GridContainer/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ItemScreen" parent="." instance=ExtResource("4_hjrv8")]
+visible = false
+layout_mode = 1
+
+[connection signal="pressed" from="ColorRect/VBoxContainer/HBoxContainer/GridContainer/FoodButton" to="." method="on_food_button_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/HBoxContainer/GridContainer/DrinkButton" to="." method="on_drink_button_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/HBoxContainer/GridContainer/CandyButton" to="." method="on_candy_button_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/HBoxContainer/GridContainer/CreateItem" to="." method="create_blank_item"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/HBoxContainer/GridContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/HBoxContainer/GridContainer/DeleteItem" to="." method="delete_resource"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/HBoxContainer/Panel/GridContainer/Button" to="." method="update_item_information"]

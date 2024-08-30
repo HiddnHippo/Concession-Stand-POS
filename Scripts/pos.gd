@@ -5,6 +5,8 @@ extends Node
 @onready var menu_screen: Control = $MenuScreen
 @onready var after_screen: Control = $AfterScreen
 @onready var reports_screen: Control = $ReportsScreen
+@onready var management_screen: Control = $ManagementScreen
+@onready var password_panel: Control = $PasswordPanel
 
 var sales_total : float = 0.0
 var customer_count: int
@@ -12,6 +14,7 @@ var customer_count: int
 func _ready():
 	menu_screen.open_register.connect(_on_open_register_screen)
 	menu_screen.open_reports.connect(_on_open_reports_screen)
+	menu_screen.open_management.connect(_on_open_management_screen)
 	
 	register_screen.main_menu.connect(_on_open_main_menu)
 	register_screen.insufficient_funds.connect(_on_insufficient_funds)
@@ -22,6 +25,10 @@ func _ready():
 	
 	reports_screen.main_menu.connect(_on_open_main_menu)
 
+	management_screen.main_menu.connect(_on_open_main_menu)
+	
+	password_panel.password_passed.connect(_on_password_login)
+	password_panel.main_menu.connect(_on_open_main_menu)
 	
 func _on_open_main_menu():
 	menu_screen.show()
@@ -47,7 +54,17 @@ func _on_open_reports_screen():
 	reports_screen.show()
 	reports_screen.load_reports()
 	reports_screen.hide_text()
-
+	
+	
+func _on_open_management_screen():
+	password_panel.show()
+	
+		
+func _on_password_login():
+	password_panel.hide()
+	management_screen.show()
+	management_screen.clear_item_data()
+	management_screen.load_menu_items()
 
 func save_reports(sales_report):
 	menu_screen.save_reports(sales_report)

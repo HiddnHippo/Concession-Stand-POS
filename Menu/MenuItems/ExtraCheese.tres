@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="MenuItem" load_steps=2 format=3 uid="uid://dahs7oy58aawv"]
-
-[ext_resource type="Script" path="res://Menu/menu_item.gd" id="1_xwrkp"]
-
-[resource]
-script = ExtResource("1_xwrkp")
-item_name = "Extra Cheese"
-item_price = 0.5
-item_type = 1

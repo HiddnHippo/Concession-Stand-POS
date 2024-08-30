@@ -2,6 +2,7 @@ extends Control
 
 signal open_register
 signal open_reports
+signal open_management
 
 var resource_path = "res://Menu/MenuItems/"
 var file_path: String = str("user://", Time.get_date_string_from_system(), "-report.dat")
@@ -21,7 +22,8 @@ func _on_reports_button_press():
 	
 	
 func _on_manage_button_press():
-	pass
+	hide()
+	open_management.emit()
 	
 	
 	

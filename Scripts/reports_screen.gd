@@ -4,7 +4,7 @@ extends Control
 @onready var grid_container: GridContainer = $ColorRect/GridContainer
 
 var report_text: String = ""
-var resource_path = "res://Menu/MenuItems/"
+var resource_path = "user://"
 var sales_total: float = 0.0
 var res_loader = ResourcePreloader.new()
 var count: int = 0
@@ -36,14 +36,18 @@ func print_report(requested_report: Dictionary):
 		if sale != "Customer Count":
 			var resources = DirAccess.get_files_at(resource_path)
 			for r in resources:
+				if r.contains(".dat"):
+					continue
 				var res = load(str(resource_path, r))
+				if res == null:
+					continue
 				if res.item_name == sale:
 					var quantity = requested_report[sale]
 					sales_total += (quantity * res.item_price)
 					report_text += (str("\n", sale, ": ", requested_report[sale], " - $", (quantity * res.item_price))).pad_decimals(2)
 		elif sale == "Customer Count":
 			count = requested_report[sale]
-			
+
 	report_text += (str("\n \n Total Sales: $", sales_total)).pad_decimals(2)
 	report_text += (str("\n Customer Count: ", count))
 	label.text = str(report_text)
@@ -60,7 +64,8 @@ func load_reports():
 	var dir_access = DirAccess.open("user://")
 	var files = dir_access.get_files()
 	for f in files:
-		add_button(f)
+		if f.contains(".dat"):
+			add_button(f)
 
 
 func sort_report(requested_report):

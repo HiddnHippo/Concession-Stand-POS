@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="MenuItem" load_steps=2 format=3 uid="uid://dl3xu63qcsa8w"]
-
-[ext_resource type="Script" path="res://Menu/menu_item.gd" id="1_dfbia"]
-
-[resource]
-script = ExtResource("1_dfbia")
-item_name = "Push-Pop"
-item_price = 1.5
-item_type = 2

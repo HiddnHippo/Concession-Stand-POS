@@ -1,8 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://bllvejrl27rka"]
+[gd_scene load_steps=11 format=3 uid="uid://bllvejrl27rka"]
 
 [ext_resource type="Script" path="res://Scripts/register_screen.gd" id="1_trpjd"]
 [ext_resource type="PackedScene" uid="uid://oyy7dm0lnk6y" path="res://Scenes/keypad.tscn" id="2_7jp82"]
 [ext_resource type="PackedScene" uid="uid://dd5njfnkv6kad" path="res://Scenes/payment_buttons.tscn" id="2_dvevk"]
+[ext_resource type="PackedScene" uid="uid://dptdjki4gb07o" path="res://Scenes/food_screen.tscn" id="3_ijylx"]
+[ext_resource type="PackedScene" uid="uid://cob61wmg76a8m" path="res://Scenes/candy_screen.tscn" id="4_8e44c"]
+[ext_resource type="PackedScene" uid="uid://bgpv6arbfterh" path="res://Scenes/drinks_screen.tscn" id="5_hs337"]
 [ext_resource type="PackedScene" uid="uid://bw2rls52ltwr0" path="res://Scenes/item_screen.tscn" id="7_dmhg8"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_blgj1"]
@@ -216,6 +219,18 @@ text = "Total:"
 label_settings = SubResource("LabelSettings_my17f")
 
 [node name="Keypad" parent="." instance=ExtResource("2_7jp82")]
+visible = false
+layout_mode = 1
+
+[node name="FoodScreen" parent="." instance=ExtResource("3_ijylx")]
+visible = false
+layout_mode = 1
+
+[node name="CandyScreen" parent="." instance=ExtResource("4_8e44c")]
+visible = false
+layout_mode = 1
+
+[node name="DrinksScreen" parent="." instance=ExtResource("5_hs337")]
 visible = false
 layout_mode = 1
 

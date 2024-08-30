@@ -32,9 +32,8 @@ var payment_types
 
 
 @onready var keypad: Control = $Keypad
-@onready var food_screen = $FoodScreen
-@onready var candy_screen = $CandyScreen
-@onready var drinks_screen = $DrinksScreen
+@onready var item_screen: Control = $ItemScreen
+
 
 @onready var item_line_panel = preload("res://Scenes/item_line.tscn")
 
@@ -43,34 +42,44 @@ func _ready():
 	hide()
 	clear_transaction()
 	keypad.hide()
-	food_screen.hide()
 	keypad.cash_entry.connect(_on_keypad_cash_entry)
+	item_screen.buttons_ready.connect(get_buttons)
+	item_screen.disconnect_button.connect(_on_disconnect_call)
 	
-	var items = get_tree().get_nodes_in_group("items")
-	for i in items:
-		i.selected_item.connect(_on_add_item)
-		
 	payment_types = get_tree().get_nodes_in_group("payment_buttons")
 	for p in payment_types:
 		p.payment_key_pressed.connect(_on_payment_key_pressed)
 	
-
+func _on_disconnect_call():
+	var buttons = get_tree().get_nodes_in_group("items")
+	for b in buttons:
+		if b.selected_item.is_connected(_on_add_item):
+			b.selected_item.disconnect(_on_add_item)
+		b.queue_free()
+		
+		
+func get_buttons():
+	var items = get_tree().get_nodes_in_group("items")
+	for i in items:
+		i.selected_item.connect(_on_add_item)
+		
+		
 func _on_payment_key_pressed(amt):
 	money_given = amt.to_float()
 	pay()
 	
 	
 func _on_food_button_press():
-	food_screen.show()
-	
+	#food_screen.show()
+	item_screen.open_item_screen(1)
 	
 func _on_drink_button_press():
-	drinks_screen.show()
-	
+	#drinks_screen.show()
+	item_screen.open_item_screen(0)
 	
 func _on_candy_button_press():
-	candy_screen.show()
-	
+	#candy_screen.show()
+	item_screen.open_item_screen(2)
 	
 func pay():
 	if total == 0:

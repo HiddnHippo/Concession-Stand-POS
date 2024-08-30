@@ -11,5 +11,6 @@ enum ITEM_TYPE {
 	
 @export var item_name: String
 @export var item_price: float
-@export var item_image: Texture2D
 @export var item_type: ITEM_TYPE
+@export var button_color: StyleBoxFlat
+@export var location: int
