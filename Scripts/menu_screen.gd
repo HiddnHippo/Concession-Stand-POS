@@ -13,18 +13,15 @@ func _ready():
 	
 	
 func _on_register_button_press():
-	hide()
 	open_register.emit()
 	
+	
 func _on_reports_button_press():
-	hide()
 	open_reports.emit()
 	
 	
 func _on_manage_button_press():
-	hide()
 	open_management.emit()
-	
 	
 	
 func _on_quit_button_press():

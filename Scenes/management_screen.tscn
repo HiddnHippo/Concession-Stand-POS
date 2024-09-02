@@ -176,9 +176,14 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
 
+[node name="ItemVisibility" type="CheckBox" parent="ColorRect/VBoxContainer/HBoxContainer/Panel/GridContainer"]
+layout_mode = 2
+text = "Item Visible"
+
 [node name="LocationEdit" type="LineEdit" parent="ColorRect/VBoxContainer/HBoxContainer/Panel/GridContainer"]
 layout_mode = 2
 placeholder_text = "Button Location (0 to 20)"
+virtual_keyboard_type = 2
 
 [node name="Button" type="Button" parent="ColorRect/VBoxContainer/HBoxContainer/Panel/GridContainer"]
 custom_minimum_size = Vector2(0, 100)

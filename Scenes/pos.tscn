@@ -12,6 +12,7 @@
 script = ExtResource("1_wsw5e")
 
 [node name="MenuScreen" parent="." instance=ExtResource("1_j547r")]
+visible = false
 
 [node name="RegisterScreen" parent="." instance=ExtResource("2_bcovt")]
 visible = false

@@ -1,15 +1,25 @@
 extends Control
 
-var password = "asdf1234"
+var password = "a"
+var correct_password: bool = false
 
-signal password_passed
 signal main_menu
 
 @onready var line_edit: LineEdit = $ColorRect/Panel/LineEdit
 
-func check_password(input_text):
-	if input_text == password:
-		password_passed.emit()
-	else:
+func ask_for_password():
+	line_edit.text = ""
+	show()
+	
+
+func check_password(input: String):
+	if input == password:
 		hide()
+	else:
 		main_menu.emit()
+
+
+func change_password(current_password: String, new_password: String):
+	if password == current_password:
+		password = new_password
+		

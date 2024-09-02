@@ -19,6 +19,11 @@ func _ready():
 func hide_text():
 	label.hide()
 	
+
+func open_screen():
+	hide_text()
+	load_reports()
+	show()
 	
 func add_button(file):
 	var b = Button.new()

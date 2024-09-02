@@ -27,7 +27,6 @@ func _ready():
 
 	management_screen.main_menu.connect(_on_open_main_menu)
 	
-	password_panel.password_passed.connect(_on_password_login)
 	password_panel.main_menu.connect(_on_open_main_menu)
 	
 func _on_open_main_menu():
@@ -51,20 +50,14 @@ func _on_thank_you():
 
 	
 func _on_open_reports_screen():
-	reports_screen.show()
-	reports_screen.load_reports()
-	reports_screen.hide_text()
+	password_panel.ask_for_password()
+	reports_screen.open_screen()
 	
 	
 func _on_open_management_screen():
-	password_panel.show()
+	password_panel.ask_for_password()
+	management_screen.open_screen()
 	
-		
-func _on_password_login():
-	password_panel.hide()
-	management_screen.show()
-	management_screen.clear_item_data()
-	management_screen.load_menu_items()
 
 func save_reports(sales_report):
 	menu_screen.save_reports(sales_report)

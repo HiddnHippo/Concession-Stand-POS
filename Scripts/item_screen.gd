@@ -30,18 +30,27 @@ func open_item_screen(type: int, test: bool = false):
 			continue
 		var res = load(str(resource_path, r))
 		if res is MenuItem and res.item_type == type:
-			add_menu_item_button(res, test)
+			if res.item_visible:
+				add_menu_item_button(res, test)
 	update_button_order(test)
 	
 
 func update_button_order(test: bool):
+	var button_order = {}
 	for c in grid_container.get_children():
 		if c.name == "ReturnButton":
 			continue
 		else:
-			c.update_button()
-			grid_container.move_child(c, c.menu_item.location)
-		grid_container.move_child(return_button, 0)
+			var temp_dictionary = {c : c.menu_item.location}
+			button_order.merge(temp_dictionary)
+		var button_order_values = button_order.values()
+		button_order_values.sort()
+		for button in button_order:
+			for value in button_order_values:
+				if button.menu_item.location == value:
+					grid_container.move_child(button, value)
+					button.update_button()
+			
 	if !test:
 		buttons_ready.emit()
 	
@@ -73,6 +82,8 @@ func _on_button_selected_to_move(button: ItemButton):
 	
 func _on_line_edit_text_submitted(submitted_text: String):
 	line_box.hide()
+	if int(submitted_text) > grid_container.get_child_count():
+		submitted_text = str(min(int(submitted_text), grid_container.get_child_count() - 1))
 	selected_button.menu_item.location = int(submitted_text)
 	update_resource_location_to_management_screen.emit(selected_button)
 	update_button_order(true)

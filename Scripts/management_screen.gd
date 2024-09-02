@@ -7,7 +7,7 @@ extends Control
 @onready var location_edit: LineEdit = $ColorRect/VBoxContainer/HBoxContainer/Panel/GridContainer/LocationEdit
 @onready var console_label: Label = $ColorRect/VBoxContainer/HBoxContainer/Panel/GridContainer/ColorRect/ConsoleLabel
 @onready var resource_button_container: GridContainer = $ColorRect/VBoxContainer/HBoxContainer/ColorRect/ScrollContainer/ResourceButtonContainer
-
+@onready var item_visible_button = $ColorRect/VBoxContainer/HBoxContainer/Panel/GridContainer/ItemVisibility
 @onready var res_button = preload("res://Scenes/resource_button.tscn")
 @onready var item_screen: Control = $ItemScreen
 
@@ -21,6 +21,12 @@ func _ready():
 	item_screen.update_resource_location_to_management_screen.connect(_on_resource_location_update)
 
 
+func open_screen():
+	show()
+	clear_item_data()
+	load_menu_items()
+	
+	
 func create_blank_item():
 	if resource == null:
 		resource = MenuItem.new()
@@ -35,6 +41,7 @@ func create_blank_item():
 	style.bg_color = color_picker_button.get_picker().color
 	resource.button_color = style
 	resource.location = int(location_edit.text)
+	resource.item_visible = item_visible_button.button_pressed
 	save_resource_file(resource)
 	
 
@@ -54,6 +61,7 @@ func update_item_information():
 	resource.item_price = item_price.text.to_float()
 	resource.item_type = option_button.selected as MenuItem.ITEM_TYPE
 	resource.location = int(location_edit.text)
+	resource.item_visible = item_visible_button.button_pressed
 	var style = StyleBoxFlat.new()
 	style.bg_color = color_picker_button.get_picker().color
 	resource.button_color = style
@@ -61,7 +69,7 @@ func update_item_information():
 	
 	
 func update_console_text():
-	var console_string = str("Item: ", item_name.text, "\nItem Price: ", item_price.text, "\nItem Type: ", convert_type(option_button.selected), "\nLocation: ", location_edit.text)
+	var console_string = str("Item: ", item_name.text, "\nItem Price: ", item_price.text, "\nItem Type: ", convert_type(option_button.selected), "\nLocation: ")
 	console_label.text = console_string
 	
 	
@@ -105,6 +113,7 @@ func _on_resource_button_pressed(res_file: MenuItem):
 	if style:
 		color_picker_button.color = style.bg_color
 	option_button.selected = int(res_file.item_type)
+	item_visible_button.button_pressed = res_file.item_visible
 	update_console_text()
 	
 	
@@ -132,9 +141,6 @@ func on_candy_button_pressed():
 	
 
 func _on_resource_location_update(updated_resource):
-	print(updated_resource.menu_item.item_name)
-	print(updated_resource.menu_item.item_price)
-	print(updated_resource.menu_item.location)
 	var files = DirAccess.get_files_at(resource_path)
 	for f in files:
 		if !files.is_empty():
@@ -142,5 +148,4 @@ func _on_resource_location_update(updated_resource):
 				var loaded_res = ResourceLoader.load(str(resource_path, f))
 				if loaded_res.item_name == updated_resource.menu_item.item_name:
 					loaded_res.location = updated_resource.menu_item.location
-					print("Save attempt")
 					save_resource_file(loaded_res)
