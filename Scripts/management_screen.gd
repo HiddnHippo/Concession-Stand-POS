@@ -17,9 +17,14 @@ var resource_path: String = "user://"
 signal main_menu
 
 
+func _ready():
+	item_screen.update_resource_location_to_management_screen.connect(_on_resource_location_update)
+
+
 func create_blank_item():
-	resource = MenuItem.new()
-	resource.item_name = item_name.text
+	if resource == null:
+		resource = MenuItem.new()
+		resource.item_name = item_name.text
 	if resource.item_name == "":
 		resource = null
 		return
@@ -40,10 +45,11 @@ func save_resource_file(res_file):
 		res_file = null
 		console_label.text = console_string
 		load_menu_items()
-	
 		
 	
 func update_item_information():
+	if resource == null:
+		return
 	resource.item_name = item_name.text
 	resource.item_price = item_price.text.to_float()
 	resource.item_type = option_button.selected as MenuItem.ITEM_TYPE
@@ -123,3 +129,18 @@ func on_drink_button_pressed():
 	
 func on_candy_button_pressed():
 	item_screen.open_item_screen(2, true)
+	
+
+func _on_resource_location_update(updated_resource):
+	print(updated_resource.menu_item.item_name)
+	print(updated_resource.menu_item.item_price)
+	print(updated_resource.menu_item.location)
+	var files = DirAccess.get_files_at(resource_path)
+	for f in files:
+		if !files.is_empty():
+			if f.contains(".tres"):
+				var loaded_res = ResourceLoader.load(str(resource_path, f))
+				if loaded_res.item_name == updated_resource.menu_item.item_name:
+					loaded_res.location = updated_resource.menu_item.location
+					print("Save attempt")
+					save_resource_file(loaded_res)

@@ -138,11 +138,13 @@ offset_bottom = 40.0
 custom_minimum_size = Vector2(350, 0)
 layout_mode = 2
 placeholder_text = "Menu Item Name"
+select_all_on_focus = true
 
 [node name="ItemPrice" type="LineEdit" parent="ColorRect/VBoxContainer/HBoxContainer/Panel/GridContainer"]
 custom_minimum_size = Vector2(350, 0)
 layout_mode = 2
 placeholder_text = "Menu Item Price"
+select_all_on_focus = true
 
 [node name="OptionButton" type="OptionButton" parent="ColorRect/VBoxContainer/HBoxContainer/Panel/GridContainer"]
 layout_mode = 2
