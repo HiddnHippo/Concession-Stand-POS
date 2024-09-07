@@ -28,21 +28,10 @@ func open_screen():
 	
 	
 func create_blank_item():
-	if resource == null:
-		resource = MenuItem.new()
-		resource.item_name = item_name.text
-	if resource.item_name == "":
-		resource = null
-		return
-		
-	resource.item_price = item_price.text.to_float()
-	resource.item_type = option_button.selected as MenuItem.ITEM_TYPE
-	var style = StyleBoxFlat.new()
-	style.bg_color = color_picker_button.get_picker().color
-	resource.button_color = style
-	resource.location = int(location_edit.text)
-	resource.item_visible = item_visible_button.button_pressed
-	save_resource_file(resource)
+	resource = MenuItem.new()
+	resource.item_name = "New Item"
+	item_name.text = "New Item"
+	update_console_text()
 	
 
 func save_resource_file(res_file):
@@ -51,21 +40,25 @@ func save_resource_file(res_file):
 		var console_string = "Resource Saved Successfully"
 		res_file = null
 		console_label.text = console_string
+		resource = null
 		load_menu_items()
 		
 	
 func update_item_information():
-	if resource == null:
+	if resource != null:
+		var temp_resource = resource as MenuItem
+		delete_resource()
+		temp_resource.item_name = item_name.text
+		temp_resource.item_price = item_price.text.to_float()
+		temp_resource.item_type = option_button.selected as MenuItem.ITEM_TYPE
+		temp_resource.location = int(location_edit.text)
+		temp_resource.item_visible = item_visible_button.button_pressed
+		var style = StyleBoxFlat.new()
+		style.bg_color = color_picker_button.get_picker().color
+		temp_resource.button_color = style
+		save_resource_file(temp_resource)
+	else:
 		return
-	resource.item_name = item_name.text
-	resource.item_price = item_price.text.to_float()
-	resource.item_type = option_button.selected as MenuItem.ITEM_TYPE
-	resource.location = int(location_edit.text)
-	resource.item_visible = item_visible_button.button_pressed
-	var style = StyleBoxFlat.new()
-	style.bg_color = color_picker_button.get_picker().color
-	resource.button_color = style
-	save_resource_file(resource)
 	
 	
 func update_console_text():
@@ -123,6 +116,8 @@ func _on_button_pressed() -> void:
 	
 
 func delete_resource():
+	for children in resource_button_container.get_children():
+		children.queue_free()
 	var dir = DirAccess.open(str(resource_path))
 	dir.remove(str(resource_path, resource.item_name.to_snake_case(), ".tres"))
 	load_menu_items()
