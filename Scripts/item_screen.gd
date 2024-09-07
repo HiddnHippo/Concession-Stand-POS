@@ -77,7 +77,8 @@ func _on_button_selected_to_move(button: ItemButton):
 	if selected_button == null:
 		selected_button = button
 		line_box.show()
-		line_edit.text = ""
+		line_edit.clear()
+		line_edit.grab_focus()
 		
 	
 func _on_line_edit_text_submitted(submitted_text: String):
