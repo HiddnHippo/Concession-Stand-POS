@@ -25,10 +25,10 @@ label_settings = SubResource("LabelSettings_ytdjx")
 vertical_alignment = 1
 
 [node name="Button" type="Button" parent="."]
-self_modulate = Color(1, 0, 0, 1)
 custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 size_flags_horizontal = 8
+theme_override_font_sizes/font_size = 48
 text = "X"
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

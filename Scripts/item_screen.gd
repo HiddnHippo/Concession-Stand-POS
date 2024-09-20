@@ -11,7 +11,7 @@ var resource_path: String = "user://"
 @onready var line_box: ColorRect = $ColorRect/ColorRect
 
 var selected_button: ItemButton = null
-var starting_slot: int
+
 
 signal buttons_ready
 signal disconnect_button
@@ -22,7 +22,7 @@ func _ready():
 	line_box.hide()
 	
 
-func open_item_screen(type: int, test: bool = false):
+func open_item_screen(type: int, test: bool = false, _custom_order: bool = false):
 	show()
 	var resources = DirAccess.get_files_at(resource_path)
 	for r in resources:
@@ -35,24 +35,33 @@ func open_item_screen(type: int, test: bool = false):
 	update_button_order(test)
 	
 
-func update_button_order(test: bool):
+func update_button_order(test: bool = false):
 	var button_order = {}
+	var return_button: Node
+	var starting_slot = 1
 	for c in grid_container.get_children():
 		if c.name == "ReturnButton":
+			return_button = c
 			continue
 		else:
-			var temp_dictionary = {c : c.menu_item.location}
+			var temp_dictionary = {}
+			if c.menu_item.location != 0:
+				temp_dictionary = {c : c.menu_item.location}
+			else:
+				temp_dictionary = {c :starting_slot}
+				starting_slot += 1
 			button_order.merge(temp_dictionary)
-		var button_order_values = button_order.values()
-		button_order_values.sort()
-		for button in button_order:
-			for value in button_order_values:
-				if button.menu_item.location == value:
-					grid_container.move_child(button, value)
-					button.update_button()
-			
+	var button_order_values = button_order.values()
+	button_order_values.sort()
+	for button in button_order:
+		for value in button_order_values:
+			if button.menu_item.location == value:
+				grid_container.move_child(button, value)
+				button.update_button()
+	grid_container.move_child(return_button, 0)
 	if !test:
 		buttons_ready.emit()
+		
 	
 	
 func add_menu_item_button(res: MenuItem, test: bool):

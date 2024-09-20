@@ -116,6 +116,8 @@ func _on_button_pressed() -> void:
 	
 
 func delete_resource():
+	if resource == null:
+		return
 	for children in resource_button_container.get_children():
 		children.queue_free()
 	var dir = DirAccess.open(str(resource_path))
